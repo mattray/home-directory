@@ -1,0 +1,7 @@
+[user]
+	name = Matt Ray
+	email = matthewhray@gmail.com
+[core]
+	editor = emacs
+[merge]
+	tool = dirdiff
