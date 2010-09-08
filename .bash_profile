@@ -26,6 +26,7 @@ if [ "dumb" == "$TERM" ];
     alias lsr="ls -lAFrt";
     alias m='cat';
     alias more='cat';
+    export PAGER=cat
 else
     alias ls="ls -AFG";
     alias lsa="ls -lAFG";
@@ -45,6 +46,9 @@ alias cl='clear'
 alias l='less'
 
 alias curl="curl -sLO"
+
+alias gits="git status"
+alias gitb="git branch"
 
 alias svns="svn status | sort"
 alias svnu="svn update"
