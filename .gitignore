@@ -2,4 +2,4 @@ build
 setuptools*
 *.pyc
 *.pyo
-~$
+*~

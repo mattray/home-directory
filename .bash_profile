@@ -3,7 +3,7 @@
 
 #export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Home
 
-export SVN_EDITOR=emacs
+export SVN_EDITOR=emacsclient
 
 MYSQL=/usr/local/mysql
 export GITHOME=/usr/local/git
@@ -35,6 +35,7 @@ else
     export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}: ${PWD/#$HOME/~}\007"'
 fi
 
+export EDITOR=emacsclient
 alias emacs='emacsclient -n "$@"'
 
 # Some more alias to avoid making mistakes:
@@ -47,8 +48,11 @@ alias l='less'
 
 alias curl="curl -sLO"
 
-alias gits="git status"
+alias gits="git status -s"
 alias gitb="git branch"
+alias gitd="git diff"
+alias gitdc="git diff --cached"
+alias gitdh="git diff HEAD"
 
 alias svns="svn status | sort"
 alias svnu="svn update"

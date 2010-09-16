@@ -61,6 +61,7 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 (server-start) ;; so it's listening for the emacsclient alias
+(setq ns-pop-up-frames nil) ;; keep OSX from opening more windows
 
 ;;UI stuff
 (menu-bar-mode (if window-system 1 -1))
