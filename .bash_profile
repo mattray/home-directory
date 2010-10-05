@@ -45,14 +45,21 @@ alias mv='mv -i'
 
 alias cl='clear'
 alias l='less'
+alias ls1='ls -1'
 
 alias curl="curl -sLO"
 
-alias gits="git status -s"
-alias gitb="git branch"
-alias gitd="git diff"
-alias gitdc="git diff --cached"
-alias gitdh="git diff HEAD"
+alias gitb="git branch" #list branches
+alias gitco="git co" #checkout
+alias gitd="git diff" #diff
+alias gitdc="git diff --cached" #diff original
+alias gitdh="git diff HEAD"  #diff head
+alias gitl="git log --oneline --decorate -5" #just the last 5 logs
+alias gitls="git log --stat --decorate -5" #just the last 5 logs with stats
+alias gitr="git checkout --" #revert
+alias gits="git status -s" #short status
+alias gitst="git status" #long status
+alias gitus="git unstage" #unstage a change alias was set with 'git config --global alias.unstage "reset HEAD"'
 
 alias svns="svn status | sort"
 alias svnu="svn update"
