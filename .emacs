@@ -1,6 +1,6 @@
 (setq default-frame-alist
       '((top . 22) (left . 2)
-        (width . 157) (height . 47)))
+        (width . 187) (height . 59)))
 
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
@@ -236,4 +236,24 @@
 (autoload 'whitespace-toggle-options "whitespace" "Toggle local `whitespace-mode' options." t)
 
 
+;; Add color to a shell running in emacs ‘M-x shell’
+;; (autoload 'ansi-color-for-comint-mode-on “ansi-color” nil t)
+;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+;; Then set the colors:
+;;(custom-set-faces
+;; custom-set-faces was added by Custom — don’t edit or cut/paste it!
+;; Your init file should contain only one such instance.
+;;'(comint-highlight-prompt ((t (:foreground “white”)))))
+;;; Shell mode
+
+;; suppress shell echoes
+(defun my-comint-init ()
+  (setq comint-process-echoes t))
+(add-hook 'comint-mode-hook 'my-comint-init)
+
+;; make completion buffers disappear after 5 seconds.
+(add-hook 'completion-setup-hook
+  (lambda () (run-at-time 5 nil
+    (lambda () (delete-windows-on "*Completions*")))))
 
