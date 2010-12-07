@@ -7,6 +7,7 @@
 
 (require 'column-marker)
 (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
+(add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
 ;;toggle column 80 marker
 ;;(global-set-key "\C-X8" 'column-marker-1)
 
@@ -159,6 +160,10 @@
 
 
 
+;; Ruby settings
+(require 'rvm)
+(rvm-use-default) ;; use rvm’s default ruby for the current Emacs session
+
 ;; ruby-mode
 ;;(setq load-path (cons "~/.emacs.d/emacs-rails" load-path))
 ;;(require 'rails)
@@ -257,3 +262,9 @@
   (lambda () (run-at-time 5 nil
     (lambda () (delete-windows-on "*Completions*")))))
 
+
+;;keep backup files in /tmp
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
