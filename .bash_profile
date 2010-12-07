@@ -1,15 +1,12 @@
 #This file is sourced by bash when you log in interactively.
 #[ -f ~/.bashrc ] && . ~/.bashrc
 
-#export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Home
-
 export SVN_EDITOR=emacsclient
 
 export GITHOME=/usr/local/git
 
 export PATH=$HOME/bin:$MYSQL/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/usr/bin:/usr/bin/X11:/sbin:/usr/sbin:/usr/X11R6/bin/:$GITHOME/bin
 
-export PS1="\u@\h(\$(date +%H:%M))\w \n\$ "
 umask 077
 
 export HISTCONTROL=ignoredups
@@ -68,4 +65,7 @@ pman () {
     man -t "${1}" | open -f -a /Applications/Preview.app
 }
 
-
+export PS1="\u@\h(\$(date +%H:%M))\w\n\$ "
+# export PS1="\u@\h(\$(date +%H:%M))\w [$(~/.rvm/bin/rvm-prompt)]\n\$ " #put this in the .rvm/hooks/after_use
+export rvm_cd_complete_flag=1
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
