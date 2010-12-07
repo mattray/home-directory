@@ -147,7 +147,7 @@
 ;;always use spaces, never tabs
 (setq-default indent-tabs-mode nil)
 ;;(define-key text-mode-map (kbd "TAB") 'tab-to-tab-stop);
-(setq default-tab-width 4);
+(setq default-tab-width 2);
 
 
 ;;Don't echo passwords when communicating with interactive programs:
