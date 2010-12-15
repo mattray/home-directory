@@ -33,9 +33,8 @@
  '(ecb-wget-setup (quote cons))
  '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
  '(frame-title-format "emacs %f" t)
-;; '(global-font-lock-mode t nil (font-lock))
  '(load-home-init-file t t)
-;; '(nxhtml-skip-welcome t)
+ '(markdown-command "/usr/local/bin/markdown")
  '(save-place t nil (saveplace))
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
@@ -49,7 +48,6 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
-
  )
 
 ;;OSX stuff
@@ -108,6 +106,9 @@
 
 ;;toggle word-wrap
 (global-set-key "\C-xd" 'dirs)
+
+;;sort buffer list by name
+(setq Buffer-menu-sort-column 2)
 
 ;;color theme
 (require 'color-theme)
@@ -253,14 +254,14 @@
 ;;; Shell mode
 
 ;; suppress shell echoes
-(defun my-comint-init ()
-  (setq comint-process-echoes t))
-(add-hook 'comint-mode-hook 'my-comint-init)
+;; (defun my-comint-init ()
+;;   (setq comint-process-echoes t))
+;; (add-hook 'comint-mode-hook 'my-comint-init)
 
-;; make completion buffers disappear after 5 seconds.
-(add-hook 'completion-setup-hook
-  (lambda () (run-at-time 5 nil
-    (lambda () (delete-windows-on "*Completions*")))))
+;; make completion buffers disappear after 8 seconds.
+;; (add-hook 'completion-setup-hook
+;;   (lambda () (run-at-time 8 nil
+;;     (lambda () (delete-windows-on "*Completions*")))))
 
 
 ;;keep backup files in /tmp
@@ -268,3 +269,64 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
+;;install dired+.el for single dired window and colored directories
+(require 'dired+)
+(toggle-dired-find-file-reuse-dir 1)
+(setq diredp-font-lock-keywords-1
+      (list
+       '("^  \\(.+:\\)$" 1 diredp-dir-heading) ; Directory headers
+       '("^  wildcard.*$" 0 'default)       ; Override others, e.g. `l' for `diredp-other-priv'.
+       '("^  (No match).*$" 0 'default)     ; Override others, e.g. `t' for `diredp-other-priv'.
+       '("[^ .]\\.\\([^. /]+\\)$" 1 diredp-file-suffix) ; Suffix
+       '("\\([^ ]+\\) -> [^ ]+$" 1 diredp-symlink) ; Symbolic links
+       ;; 1) Date/time and 2) filename w/o suffix:
+       (list dired-move-to-filename-regexp  '(1 diredp-date-time t t) ; Date/time
+             (list "\\(.+\\)$" nil nil (list 0 diredp-file-name 'keep t))) ; Filename
+       ;; Files to ignore
+       (list (concat "^  \\(.*\\("
+                     (concat (mapconcat 'regexp-quote
+                                        (or (and (boundp 'dired-omit-extensions)
+                                                 dired-omit-extensions)
+                                            completion-ignored-extensions)
+                                        "[*]?\\|")
+                             "[*]?")        ; Allow for executable flag (*).
+                     "\\|\\.\\(g?z\\|Z\\)[*]?\\)\\)$") ; Compressed.
+             1 diredp-ignored-file-name t)
+       '("[^ .]\\.\\([bg]?[zZ]2?\\)[*]?$" 1 diredp-compressed-file-suffix t) ; Compressed (*.z)
+       '("\\([*]\\)$" 1 diredp-executable-tag t) ; Executable (*)
+       '(" \\([0-9]+\\(\\.[0-9]+\\)?[kKMGTPEZY]?\\)" 1 diredp-inode+size) ; File inode number & size
+       ;; Directory names
+       (list "^..\\([0-9]* \\)*d"
+             (list dired-move-to-filename-regexp nil nil)
+             (list "\\(.+\\)" nil nil '(0 diredp-dir-priv t t)))
+       '("^..\\([0-9]* \\)*.........\\(x\\)" 2 diredp-exec-priv) ;o x
+       '("^..\\([0-9]* \\)*.........\\([lsStT]\\)" 2 diredp-other-priv) ; o misc
+       '("^..\\([0-9]* \\)*........\\(w\\)" 2 diredp-write-priv) ; o w
+       '("^..\\([0-9]* \\)*.......\\(r\\)" 2 diredp-read-priv)   ; o r
+       '("^..\\([0-9]* \\)*......\\(x\\)" 2 diredp-exec-priv)    ; g x
+       '("^..\\([0-9]* \\)*....[^0-9].\\([lsStT]\\)" 2 diredp-other-priv) ; g misc
+       '("^..\\([0-9]* \\)*.....\\(w\\)" 2 diredp-write-priv) ; g w
+       '("^..\\([0-9]* \\)*....\\(r\\)" 2 diredp-read-priv)   ; g r
+       '("^..\\([0-9]* \\)*...\\(x\\)" 2 diredp-exec-priv)    ; u x
+       '("^..\\([0-9]* \\)*...\\([lsStT]\\)" 2 diredp-other-priv) ; u misc
+       '("^..\\([0-9]* \\)*..\\(w\\)" 2 diredp-write-priv) ; u w
+       '("^..\\([0-9]* \\)*.\\(r\\)" 2 diredp-read-priv)   ; u r
+       '("^..\\([0-9]* \\)*.\\([-rwxlsStT]+\\)" 2 diredp-no-priv keep) ;-
+       '("^..\\([0-9]* \\)*\\([bcsmpS]\\)[-rwxlsStT]" 2 diredp-rare-priv) ; (rare)
+       '("^..\\([0-9]* \\)*\\(l\\)[-rwxlsStT]" 2 diredp-link-priv) ; l
+       (list (concat "^\\([^\n " (char-to-string dired-del-marker) "].*$\\)")
+             1 diredp-flag-mark-line t) ; Flag/mark lines
+       (list (concat "^\\([" (char-to-string dired-del-marker) "]\\)") ; Deletion flags (D)
+             '(1 diredp-deletion t)
+             '(".+" (dired-move-to-filename) nil (0 diredp-deletion-file-name t)))
+       (list (concat "^\\([^\n " (char-to-string dired-del-marker) "]\\)") ; Flags, marks (except D)
+             1 diredp-flag-mark t)
+       ))
+
+
+;;Markdown mode 
+(autoload 'markdown-mode "markdown-mode.el"
+  "Major mode for editing Markdown files" t)
+(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.text" . markdown-mode) auto-mode-alist))
