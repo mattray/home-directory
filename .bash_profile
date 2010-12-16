@@ -30,7 +30,7 @@ else
 fi
 
 export EDITOR=emacsclient
-alias emacs='emacsclient -n "$@"'
+alias emacs='emacsclient -n "$@" &'
 
 # Some more alias to avoid making mistakes:
 alias rm='rm -i'
@@ -65,7 +65,11 @@ pman () {
     man -t "${1}" | open -f -a /Applications/Preview.app
 }
 
-export PS1="\u@\h(\$(date +%H:%M))\w\n\$ "
-# export PS1="\u@\h(\$(date +%H:%M))\w [$(~/.rvm/bin/rvm-prompt)]\n\$ " #put this in the .rvm/hooks/after_use
+parse_git_branch() {
+git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+export PS1="\u@\h[\$(date +%H:%M)]\$(parse_git_branch) \w\n\$ "
 export rvm_cd_complete_flag=1
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
