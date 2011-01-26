@@ -174,6 +174,8 @@
 ;;(setq auto-mode-alist  (cons '("\\.rhtml$" . html-mode) auto-mode-alist))
 ;;(add-hook 'ruby-mode-hook 'turn-on-font-lock)
 
+;;JSON
+(setq auto-mode-alist  (cons '("\\.json$" . javascript-mode) auto-mode-alist))
 
 
 ;;JSP stuff
