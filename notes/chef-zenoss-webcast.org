@@ -1,0 +1,140 @@
+* Introduction
+** Personal 
+*** Senior Technical Evangelist with Opscode
+*** former Zenoss Community Manager
+** Discuss Chef
+*** Chef is an open source systems integration framework which allows you to build dynamic infrastructure
+*** Open Source, Apache licensed with well over 200 external contributors
+*** Very vibrant and active community in a wide variety of industries and software stacks
+*** Unlike some tools, what makes Chef different is the focus of data-driven configuration rather than declarative configuration, we'll see more of that soon.
+*** We'll be building in a hybrid cloud environment, driving the deployment from a OS10 laptop, with Ubuntu 10.04 on Fusion and Ubuntu 10.10 on Amazon EC2
+*** We could just as easily run this from physical hardware or another virtualization or cloud provider, that's one of the strengths of Zenoss.
+*** Chef typically uses a client/server model, where the server holds configuration information and exposes it via http for search.
+*** You may run your own chef-server, but the Opscode platform is an API-compatible, extremely scalable and highly-available platform that is quite cost-effective compared to running your own.
+*** knife is the command line tool for interacting with the chef-server, passing JSON via HTTP. We'll see it in action as we deploy our infrastructure.
+** Discuss Zenoss Core
+*** Zenoss is an open source monitoring platform.  
+*** If you're unaware of how it works, it uses a central server to monitor devices via remote protocols like SNMP, SSH or JMX.
+*** Unlike some monitoring applications, it does not use an agent to provide monitoring data for devices so our devices will need to run SSH.
+*** It's a Python application running on the Zope application server with MySQL.
+*** Installing Zenoss is actually quite easy, since the .deb is a "stack installer", with all the dependencies included.
+* We've already installed the Zenoss cookbook and the dependencies
+  OpenSSL, OpenSSH and Apt cookbooks)
+* Load the Roles provided with the cookbook into the system. We'll explain these in a bit.
+  knife role from file cookbooks/zenoss/roles/Class_Server-SSH-Linux-MySQL.rb
+  knife role from file cookbooks/zenoss/roles/Class_Server-SSH-Linux.rb
+  knife role from file cookbooks/zenoss/roles/Location_Austin.rb
+  knife role from file cookbooks/zenoss/roles/Location_Seattle.rb
+  knife role from file cookbooks/zenoss/roles/ZenossServer.rb
+* Create the 'User' Data Bag that stores our users
+    knife data bag create users
+    knife data bag from file users cookbooks/zenoss/data_bags/Zenoss_User.json
+    knife data bag from file users cookbooks/zenoss/data_bags/Zenoss_Readonly_User.json
+* Add a node
+** ubuntu1004.localdomain
+*** running on VMware Fusion
+*** already has chef installed
+*** already checked in
+*** knife node list
+** give it the ZenossServer role
+   knife node run_list add ubuntu1004.localdomain 'role[ZenossServer]'
+* Launch Zenoss::Server node
+  sudo chef-client on the node
+** Briefly discuss the startup of chef-client
+   note the downloading of cookbooks used by the Zenoss cookbook (openssl, openssh and apt)
+   apt repository
+** Once it hits the Zenoss deb, switch to
+* Launch in parallel 10 clients of various roles
+  sh ~/ws/chef-repo/tmux.sh
+** briefly discuss tmux and open up the script to show what it's doing
+** knife ec2 create is going to request micro AMIs from Amazon, bootstrap them with Chef and assign them to the proper roles which includes the zenoss::client
+** Assorted roles and attributes for demonstration purposes
+** show a little output
+* Discuss what the Zenoss Cookbook provides
+** README.md
+*** Requirements
+*** Testing
+* Attributes
+  attributes/default.rb
+* Roles
+** these are going to provide attributes and describe how chef is going configure nodes that utilize those roles 
+** Device Class Roles
+*** Roles intended to map to Device Classes set the attribute [:zenoss][:device][:device_class]. This is an override_attribute on the role.
+*** Roles may set default attributes for [:zenoss][:device][:modeler_plugins], [:zenoss][:device][:templates] and [:zenoss][:device][:properties] to be applied to the Device Class.
+*** The name for the role is unused by Zenoss.
+*** Nodes may only belong to a single Device Class, nodes that belong to multiple Device Class roles will have non-determinant membership in a single Device Class.
+** Location Roles
+*** Roles intended to map to Locations set the attribute [:zenoss][:device][:location]. This is an override_attribute on the role.
+*** Location roles may set the have [:zenoss][:device][:address] attribute for the Google map address. If you are using a newline, make sure it is entered as \\n in the role. This is an override_attribute on the role.
+*** The name and the description for the role map to the name and description of the Location.
+*** Nodes may only belong to a single Location, nodes that belong to multiple Location roles will have non-determinant membership in a single Location.
+** Group Roles
+*** The roles in organization will populate the Groups on the Zenoss server.
+*** The Device Class and Location roles will not be added to Groups.
+* Recipes
+** Client
+*** The client includes the openssh recipe and adds the device to the Zenoss server for monitoring.
+** Default
+*** The default recipe passes through to zenoss::client.
+** Server
+*** The server includes the openssh and apt recipes. The server recipe installs Zenoss from the .deb stack installer via the apt cookbook, handling and configuring all the dependencies.
+*** Installs Zenoss.
+*** Applies post-3.0.3 patches from closed tickets.
+*** Starts server.
+*** Sets the admin password.
+*** Adds any other users to the proper Zenoss roles from our 'users' data bag
+*** Creates a zenoss user for running Zenoss and monitoring clients via SSH.
+*** Installs ZenPacks required for monitoring.
+*** Creates Device Classes, Groups and Locations based on Chef roles containing custom settings.
+*** Adds Systems to the server based on which recipes are used within Chef.
+*** Adds itself to be monitored.
+*** Searches for members of the sysadmins group by searching through 'users' data bag and adds them to a list for notification/contacts.
+*** Finds all nodes implementing zenoss::client and adds them for monitoring and places them in the proper Device Classes, Groups, Systems and Locations and any node-specific settings as well.
+* Resources/Providers (LWRP)
+** zenbatchload
+*** This LWRP builds a list of devices, their Device Classes, Systems, Groups, Locations and their properties and populates the zenoss::server with them.
+** zendmd
+*** This LWRP takes a command to be executed by the zendmd command on the Zenoss server. Examples include creating users, adding organizers and other changes to the Zope object database.
+** zenpack
+*** Installs ZenPacks on the zenoss::server for use for extending the base functionality.
+** zenpatch
+*** Installs patches on the zenoss::server based on the number referenced in the ticket.
+* Data Bags
+** The users data bag holds the users to add on the Zenoss server.
+** Call zendmd to add users to the system.
+** Users can have passwords, email, pager and user groups set or left blank.
+* Back to the chef install on server
+** zenpatches
+** passwords
+** ZenPacks
+** Device Classes, Locations and Groups created
+** Devices added via zenbatchload
+** use --log_level debug to see actual zendmd and zenbatchload calls 
+** nodes don't have their SSH keys
+* let's make a call to re-run chef-client on the nodes to get them synced up.
+** knife ssh "*:*" "sudo chef-client" -x ubuntu -a ec2.public_hostname -i ~/.ssh/mray.pem 
+** the EC2 nodes all have the SSH key now
+* we'll need to remodel the machines in zenoss to take advantage of this
+** we could do this with zenmodeler as the zenoss user or we could re-run the chef-client run on the server
+** needs refining on the fact that it re-runs the zendmd calls, but the zenbatchload will call zenmodeler 
+* let's look at the Zenoss UI now and see what we've got!
+** our admin password wasn't set as an attribute, so it's been randomly assigned
+** knife node show ubuntu1004.localdomain -a zenoss to pull it out
+* Zenoss Dashboard
+*** Enter the Google Maps API key and they'll map
+* Zenoss Infrastructure
+** No discovery, actual infrastructure as defined!
+** Devices Classes
+*** properties, modeler plugins and tempaltes  on device classes can be set
+** Locations
+*** Description and addresses set
+** Groups
+*** all the remaining roles from Chef
+** Systems
+*** these are based on the recipes implemented by nodes
+* TODO.txt
+** future features
+** CentOS!
+* On GitHub
+** Feedback actively encouraged
+
