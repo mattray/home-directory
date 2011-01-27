@@ -7,12 +7,14 @@ This talk will provide background on the DevOps movement, the basics of Chef and
 2. Check out the Cluster Chef repository from GitHub.  You may either download it from [https://github.com/infochimps/cluster_chef/archives/version_2](https://github.com/infochimps/cluster_chef/archives/version_2 "Download") or check it out with Git. We're using the "version_2" branch which is still under development but targeted at making Cluster Chef more accessible for new users:
 
     git clone git://github.com/infochimps/cluster_chef.git
+
     git checkout --track -b version_2 origin/version_2
 
 3. Copy your `.chef` directory from your working repository to your `cluster_chef` directory.
 4. Append the following to your `cluster_chef/.chef/.knife.rb`
 
     cookbook_path ["#{current_dir}/../cookbooks","#{current_dir}/../site-cookbooks"]
+
     cluster_chef_path "/PATH/TO/cluster_chef"
 
 5. Create a create keypair `demohadoop` in AWS and save it to 
