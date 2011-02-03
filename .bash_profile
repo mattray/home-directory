@@ -59,6 +59,9 @@ alias svns="svn status | sort"
 alias svnu="svn update"
 alias svnd="svn diff"
 
+#show the file in OSX Finder
+alias reveal="open -R"
+
 alias finds="find . -type f | grep -v .svn | grep -v .git"
 
 pman () {
