@@ -1,0 +1,273 @@
+* undo site-cookbooks
+* license and author questions?
+** mention it to vish and slap some Apache in there
+** followup with Adam
+* Cookbooks need to be versioned
+* when do we depend on the apt cookbook in metadata.rb vs. include in recipe vs. include in run_list?
+  metadata has to list includes
+* remove
+  chef-solo.rb
+  dna.json
+  install-swift.sh
+  swift-template.json
+** what's with all these roles?
+* make repo configurable via attribute for use with Crowbar
+* Deployment Scenarios
+** nova-single-machine-install
+   http://wiki.openstack.org/NovaInstall/DevPkgInstall
+   sudo apt-get install nova-common nova-doc nova-api nova-network nova-objectstore nova-scheduler nova-compute euca2ools unzip
+
+   get a AMI on there
+   pick up on the Create Certifications
+   pick up with the setup instructions for enabling the VM
+
+** 2 machine setup
+** cloud controller
+   Installing the Cloud Controller
+   
+** compute node
+   Install all the nova- packages and dependencies as you did for the Cloud Controller node. On this node, you must have nova-network installed and configured.
+** finish both
+
+   On both nodes, restart all six services in total, just to cover the entire spectrum:
+
+   libvirtd restart; restart nova-network; restart nova-compute; 
+   restart nova-api; restart nova-objectstore; restart nova-scheduler
+
+** additional database servers
+
+** additional RabbitMQ servers
+   An alternative architecture would be to add more messaging servers if you notice a lot of back up in the messaging queue causing performance problems. 
+   In that case you would add an additional RabbitMQ server in addition to or instead of scaling up the database server. 
+
+* ROLES
+**   Create roles to scale out controller infrastructure
+**   Support: Queue, Database, LDAP
+**   Interfaces: API controllers
+**   Workers: Compute, Storage, Networking
+** Add monitoring
+* Compute (Nova)
+** Hardware
+   x86 Server (HW virtualization recommmended) Storage flexible (Local, SAN, NAS)
+   DHCP for managing network managed by Compute
+** Host OS Installation
+   Bootp/TFTP
+   GPXE
+   Scripted installation 
+** Links
+   http://ansolabs.com/articles/multi-node-nova-installation-using-vagrant-and-chef
+   https://github.com/ansolabs/openstack-cookbooks
+   https://github.com/vvuksan/nova-solo
+   https://fnords.wordpress.com/2010/12/02/bleeding-edge-openstack-nova-on-maverick/
+   http://blog.warma.dk/2010/10/11/openstack-nova-in-maverick/
+   http://wiki.openstack.org/NovaInstall/MultipleServer
+** Cloud Controller
+   State of the system, talks to LDAP, Object Storage and node/storage workers through Queue
+** User Manager
+** API
+   Receives HTTP requests, sends them to Cloud Controller
+** Glance
+   HTTP + Object Storage for server images
+** Hypervisor
+   Xen/XenServer/Hyper-V/KVM/UML/ESX (LXC coming)
+   
+* Object Storage (Swift)
+** x86 Server (other archs possible) Do not use RAID
+** Links
+   https://github.com/cloudscaling/swift-solo
+   https://github.com/ansolabs/openstack-cookbooks
+** Ring
+   Maps names to entities (accounts, containers, objects) on disk.
+   Stores data based on zones, devices, partitions, and replicas
+   Weights can be used to balance the distribution of partitions
+   Used by the ProxyServer for many background processes
+** Proxy Server
+   Request routing, exposes the API
+** Replication
+   Keep the system consistent, handle failures
+** Updaters
+   Process failed or queued updates
+** Auditors
+   Verify integrity of objects,containers and accounts
+** Account Server
+   Handles listing of containers,stores as SQLiteDB
+** Container Server
+   Handles listing of objects, stores as SQLiteDB
+** ObjectServer
+   Blob storage server,metadata kept in xattrs, data in binary format
+   Recommended to run on XFS Object location based on hash of name & timestamp
+
+
+
+
+
+
+
+   Automated provisioning
+   DHCP bootstrap
+
+   banquet
+
+   admin
+   dhcp
+   DNS
+   DHCP
+   NTP
+
+   network boot clients
+   RH->Chef Server
+
+   notifcations like Puppet's external classification
+
+
+   behind the firewall is definitely important
+
+   separate session for hands-on launch
+
+   some logic necessary when handing out 
+
+
+*** need to extend Chef Server UI 
+
+* Dashboard?
+  https://launchpad.net/openstack-dashboard
+* nova
+  add a nova-manage LWRP?
+** attributes
+   any to clean up?
+   doc in README.md
+** definitions
+   nova_package.rb
+   what is this?
+   doc it
+** files
+   are these all used and necessary? 
+   doc as needed
+*** base.ldif
+*** default-rsync
+*** iscsidev.sh*
+*** nova.schema
+*** openssh-lpk_openldap.schema
+** templates
+   are these all used and necessary? 
+   doc as needed
+*** grants.sql.erb
+*** hostname.erb
+*** ldap.conf.erb
+*** nova.conf.erb
+    nova::common
+*** slapd.conf.erb
+*** sv-nova-api-log-run.erb
+*** sv-nova-api-run.erb
+*** sv-nova-compute-log-run.erb
+*** sv-nova-compute-run.erb
+*** sv-nova-objectstore-log-run.erb
+*** sv-nova-objectstore-run.erb
+*** sysctl.conf.erb
+** nova::all
+   don't see this in a role
+** nova::api
+** nova::common
+   includes apt
+   nova-common via apt
+   /etc/nova directory
+   mysql connection
+   rabbit connection
+   /etc/nova/nova.conf
+**** switch to an apt repository instead of PPA
+** nova::compute
+** nova::creds
+** nova::dashboard
+** nova::default
+   nova::all
+   nova::setup
+** nova::filevg
+** nova::hostname
+** nova::mysql
+** nova::network
+** nova::objectstore
+** nova::openldap
+** nova::rabbit
+** nova::scheduler
+** nova::setup
+   installs eucatools, curl
+   replace curl calls with remote file resource?
+   curl http://images.ansolabs.com/maverick.tgz | tar xvz -C /tmp/images
+   curl http://images.ansolabs.com/tty.tgz | tar xvz -C images
+   replace "touch" with touch resource
+** nova::source
+** nova::volume
+   
+   
+* nova
+  add a nova-manage LWRP?
+** attributes
+   any to clean up?
+   doc in README.md
+** definitions
+   nova_package.rb
+   what is this?
+   doc it
+** files
+   are these all used and necessary? 
+   doc as needed
+*** base.ldif
+*** default-rsync
+*** iscsidev.sh*
+*** nova.schema
+*** openssh-lpk_openldap.schema
+** templates
+   are these all used and necessary? 
+   doc as needed
+*** grants.sql.erb
+*** hostname.erb
+*** ldap.conf.erb
+*** nova.conf.erb
+    nova::common
+*** slapd.conf.erb
+*** sv-nova-api-log-run.erb
+*** sv-nova-api-run.erb
+*** sv-nova-compute-log-run.erb
+*** sv-nova-compute-run.erb
+*** sv-nova-objectstore-log-run.erb
+*** sv-nova-objectstore-run.erb
+*** sysctl.conf.erb
+** nova::all
+   don't see this in a role
+** nova::api
+** nova::common
+   includes apt
+   nova-common via apt
+   /etc/nova directory
+   mysql connection
+   rabbit connection
+   /etc/nova/nova.conf
+**** switch to an apt repository instead of PPA
+** nova::compute
+** nova::creds
+** nova::dashboard
+** nova::default
+   nova::all
+   nova::setup
+** nova::filevg
+** nova::hostname
+** nova::mysql
+** nova::network
+** nova::objectstore
+** nova::openldap
+** nova::rabbit
+** nova::scheduler
+** nova::setup
+   installs eucatools, curl
+   replace curl calls with remote file resource?
+   curl http://images.ansolabs.com/maverick.tgz | tar xvz -C /tmp/images
+   curl http://images.ansolabs.com/tty.tgz | tar xvz -C images
+   replace "touch" with touch resource
+** nova::source
+** nova::volume
+   
+   
+* the deployment goal is to look at how many servers are available, then assign roles accordingly
+  start with hard-coded
+  eventually adaptive
+  
