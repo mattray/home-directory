@@ -1,0 +1,17 @@
+* Install
+** Ubuntu 10.10 i386
+** openssh-server
+
+* Manual changes
+** packages
+*** emacs23-nox
+** /home/mray/.ssh/authorized_keys
+** added ".localdomain" to the /etc/hosts
+** need to enable power-saving mode
+   sudo apt-get install pommed acpi-support
+   laptop-mode-conf
+   ENABLE_LAPTOP_MODE_ON_AC=1
+   ENABLE_LAPTOP_MODE_WHEN_LID_CLOSED=1
+   echo -e '#!/bin/sh\nhdparm -M 128 -B 20 /dev/sda' | sudo tee -a /etc/acpi/start.d/99-macbook-fix.sh
+
+* knife bootstrap hypnotoad -i ~/.ssh/id_rsa -x mray --sudo -d ubuntu10.04-gems
