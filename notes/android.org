@@ -1,16 +1,16 @@
 Requirements for switching to Android
-* 2.3 update
+* 2.3 update +
 * iTunes integration
-* Dropbox
-* Facebook
-* Flashlight
-* IMDB
+* Dropbox +
+* Facebook +
+* Flashlight +
+* IMDB +
 * MP3
-* Netflix
-* Skype
-* Tripit
-* Twitter
+* Netflix 
+* Skype +
+* Tripit +
+* Twitter +
 * Video
-* Weather
+* Weather +
 * Wikipedia
-* Yelp
+* Yelp +
