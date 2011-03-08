@@ -73,7 +73,7 @@
 ;;(set-face-font 'default "-apple-inconsolata-bold-r-normal--18-180-72-72-m-180-iso10646-1")
 ;;(set-face-font 'default "-*-inconsolata mono-medium-r-*--15-*-*-*-*-*-*-*")
 
-(set-face-font 'default "-*-bitstream vera sans mono-medium-r-*--15-*-*-*-*-*-*-*")
+(set-face-font 'default "-*-bitstream vera sans mono-medium-r-*--18-*-*-*-*-*-*-*")
 ;;(set-face-font 'menu "-misc-fixed-medium-*-*-*-12-*-*-*-*-*-*-*")
 ;;(set-face-font 'default "-misc-fixed-medium-*-*-*-20-*-*-*-*-*-*-*")
  (defun jfb-set-mac-font (name  size)
@@ -150,7 +150,6 @@
 (setq-default indent-tabs-mode nil)
 ;;(define-key text-mode-map (kbd "TAB") 'tab-to-tab-stop);
 (setq default-tab-width 2);
-
 
 ;;Don't echo passwords when communicating with interactive programs:
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
@@ -332,3 +331,8 @@
   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.text" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.seed" . conf-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.erb" . conf-mode) auto-mode-alist))
+
+(autoload 'yaml-mode "yaml-mode.el" "Major mode for editing YAML files" t)
+(setq auto-mode-alist (cons '("\\.yml" . yaml-mode) auto-mode-alist))
