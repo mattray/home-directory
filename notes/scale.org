@@ -1,0 +1,19 @@
+knife node show "h00-26-6c-f6-58-60.pod.cloud.openstack.org" -r
+knife node show "h00-26-6c-f6-58-60.pod.cloud.openstack.org" -a ipaddress
+
+knife node run_list add  "h00-26-6c-f6-58-60.pod.cloud.openstack.org" "role[nova-single-machine-install]"
+
+sudo chef-client
+
+sudo su - nova
+
+nova-manage service list
+
+euca-describe-images
+
+euca-run-instances amiXXX -k mykey -t m1.tiny
+
+euca-describe-instances
+
+ssh -i mykey.priv ubuntu@10.0.0.2
+
