@@ -59,6 +59,8 @@ alias svns="svn status | sort"
 alias svnu="svn update"
 alias svnd="svn diff"
 
+alias grep="grep --color=auto"
+
 #show the file in OSX Finder
 alias reveal="open -R"
 
