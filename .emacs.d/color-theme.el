@@ -15169,7 +15169,8 @@ bold))))
    (interactive)
    (color-theme-install
     '(color-theme-deep-blue-mray
-      ((background-color . "#101e4e")
+      (
+       (background-color . "#001122")
        (background-mode . dark)
        (border-color . "black")
        (cursor-color . "yellow2")
@@ -15182,7 +15183,7 @@ bold))))
        (vc-annotate-very-old-color . "#0046FF")
        (view-highlight-face . highlight)
        (widget-mouse-face . highlight))
-      (default ((t (:stipple nil :background "#101e4e" :foreground "#eeeeee" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :width normal :family "outline-andale-mono"))))
+      (default ((t (:stipple nil :background "#001122" :foreground "#eeeeee" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :width normal :family "outline-andale-mono"))))
      (Info-title-1-face ((t (:bold t :weight bold :height 1.728 :family "helv"))))
      (Info-title-2-face ((t (:bold t :weight bold :height 1.44 :family "helv"))))
      (Info-title-3-face ((t (:bold t :weight bold :height 1.2 :family "helv"))))

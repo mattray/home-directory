@@ -113,6 +113,8 @@
 ;;color theme
 (require 'color-theme)
 (color-theme-deep-blue-mray)
+;;(require 'color-theme-solarized)
+;;(color-theme-solarized-dark)
 ;;(color-theme-dark-blue2)
 ;;(color-theme-subtle-hacker)
 
@@ -163,6 +165,15 @@
 ;; Ruby settings
 (require 'rvm)
 (rvm-use-default) ;; use rvm’s default ruby for the current Emacs session
+
+;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
+(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
 ;; ruby-mode
 ;;(setq load-path (cons "~/.emacs.d/emacs-rails" load-path))
@@ -336,3 +347,4 @@
 
 (autoload 'yaml-mode "yaml-mode.el" "Major mode for editing YAML files" t)
 (setq auto-mode-alist (cons '("\\.yml" . yaml-mode) auto-mode-alist))
+
