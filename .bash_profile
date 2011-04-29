@@ -52,6 +52,7 @@ alias gitl="git log --oneline --decorate -5" #just the last 5 logs
 alias gitls="git log --stat --decorate -5" #just the last 5 logs with stats
 alias gitr="git checkout --" #revert
 alias gits="git status -s" #short status
+alias gits?="git status -s | grep -v \?\?" #ignore unknowns
 alias gitst="git status" #long status
 alias gitus="git unstage" #unstage a change alias was set with 'git config --global alias.unstage "reset HEAD"'
 
