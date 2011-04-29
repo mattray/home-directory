@@ -13,10 +13,10 @@
 
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(auto-compression-mode t nil (jka-compr))
  '(case-fold-search t)
  '(column-number-mode t)
@@ -44,10 +44,10 @@
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(visible-bell f))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
 
 ;;OSX stuff
@@ -76,16 +76,16 @@
 (set-face-font 'default "-*-bitstream vera sans mono-medium-r-*--18-*-*-*-*-*-*-*")
 ;;(set-face-font 'menu "-misc-fixed-medium-*-*-*-12-*-*-*-*-*-*-*")
 ;;(set-face-font 'default "-misc-fixed-medium-*-*-*-20-*-*-*-*-*-*-*")
- (defun jfb-set-mac-font (name  size)
-    (interactive
-     (list (completing-read "font-name: " (mapcar (lambda (n) (list n n)) (mapcar (lambda (p) (car p)) (x-font-family-list))) nil t)
-           (read-number "size: " 12)))
-    (set-face-attribute 'default nil
-                        :family name
-                        :slant  'normal
-                        :weight 'normal
-                        :width  'normal
-                        :height (* 10 size)))
+(defun jfb-set-mac-font (name  size)
+  (interactive
+   (list (completing-read "font-name: " (mapcar (lambda (n) (list n n)) (mapcar (lambda (p) (car p)) (x-font-family-list))) nil t)
+         (read-number "size: " 12)))
+  (set-face-attribute 'default nil
+                      :family name
+                      :slant  'normal
+                      :weight 'normal
+                      :width  'normal
+                      :height (* 10 size)))
 
 
 
@@ -107,13 +107,22 @@
 ;;toggle word-wrap
 (global-set-key "\C-xd" 'dirs)
 
+;;create frame
+(global-set-key "\M-~" 'new-frame)
+;;next frame
+(global-set-key "\M-`" 'ns-next-frame)
+
+;;text size
+(global-set-key "\M-+" 'text-scale-increase)
+(global-set-key "\M-_" 'text-scale-decrease)
+
 ;;sort buffer list by name
 (setq Buffer-menu-sort-column 2)
 
 ;;color theme
 (require 'color-theme)
 (color-theme-deep-blue-mray)
-;;(require 'color-theme-solarized)
+;;(require 'color-theme-ir-black)
 ;;(color-theme-solarized-dark)
 ;;(color-theme-dark-blue2)
 ;;(color-theme-subtle-hacker)
