@@ -3,6 +3,7 @@ setuptools*
 *.pyc
 *.pyo
 *~
+metadata.json
 
 ws
 sounds
