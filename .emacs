@@ -2,15 +2,13 @@
       '((top . 22) (left . 2)
         (width . 187) (height . 59)))
 
-
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 
 (require 'column-marker)
 (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
 ;;toggle column 80 marker
-;;(global-set-key "\C-X8" 'column-marker-1)
-
+;;(global-set-key "\C-X8" 'column-marker-1 80)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -42,16 +40,14 @@
  '(tool-bar-mode nil nil (tool-bar))
  '(transient-mark-mode t)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
- '(visible-bell f))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+ '(visible-bell f)
+ ;; confluence customization
+ '(confluence-url "http://wiki.corp.opscode.com/rpc/xmlrpc")
+ '(confluence-default-space-alist (list (cons confluence-url "TSE")))
  )
 
 ;;OSX stuff
-(set-frame-parameter (selected-frame) 'alpha '(99 85))
+(set-frame-parameter (selected-frame) 'alpha '(99 95))
 (add-to-list 'exec-path "/usr/local/mysql/bin")
 (add-to-list 'exec-path "/opt/local/sbin")
 (add-to-list 'exec-path (getenv "PATH"))
@@ -87,8 +83,6 @@
                       :width  'normal
                       :height (* 10 size)))
 
-
-
 ;;Key bindings
 ;;skip to line number
 (global-set-key "\C-Xg" 'goto-line)
@@ -121,8 +115,11 @@
 
 ;;color theme
 (require 'color-theme)
-(color-theme-deep-blue-mray)
-;;(require 'color-theme-ir-black)
+;;(color-theme-deep-blue-mray)
+;; (require 'color-theme-ir-black)
+;; (require 'color-theme-mattray)
+(require 'color-theme-twilight-mattray)
+(color-theme-twilight-mattray)
 ;;(color-theme-solarized-dark)
 ;;(color-theme-dark-blue2)
 ;;(color-theme-subtle-hacker)
@@ -284,7 +281,6 @@
 ;;   (lambda () (run-at-time 8 nil
 ;;     (lambda () (delete-windows-on "*Completions*")))))
 
-
 ;;keep backup files in /tmp
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
@@ -345,7 +341,6 @@
              1 diredp-flag-mark t)
        ))
 
-
 ;;Markdown mode 
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
@@ -354,6 +349,56 @@
 (setq auto-mode-alist (cons '("\\.seed" . conf-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.erb" . conf-mode) auto-mode-alist))
 
+;;YAML mode
 (autoload 'yaml-mode "yaml-mode.el" "Major mode for editing YAML files" t)
 (setq auto-mode-alist (cons '("\\.yml" . yaml-mode) auto-mode-alist))
 
+;; assuming confluence.el and xml-rpc.el are in your load path
+(require 'confluence)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; confluence editing support (with longlines mode)
+;;(autoload 'confluence-get-page "confluence" nil t)
+;; (eval-after-load "confluence"
+;;   '(progn
+;;      (require 'longlines)
+;;      (progn
+;;        (add-hook 'confluence-mode-hook 'longlines-mode)
+;;        (add-hook 'confluence-before-save-hook 'longlines-before-revert-hook)
+;;        (add-hook 'confluence-before-revert-hook 'longlines-before-revert-hook)
+;;        (add-hook 'confluence-mode-hook '(lambda () (local-set-key "\C-j" 'confluence-newline-and-indent))))))
+;; LongLines mode: http://www.emacswiki.org/emacs-en/LongLines
+;; (autoload 'longlines-mode "longlines" "LongLines Mode." t)
+;; (eval-after-load "longlines"
+;;   '(progn
+;;      (defvar longlines-mode-was-active nil)
+;;      (make-variable-buffer-local 'longlines-mode-was-active)
+;;      (defun longlines-suspend ()
+;;        (if longlines-mode
+;;            (progn
+;;              (setq longlines-mode-was-active t)
+;;              (longlines-mode 0))))
+;;      (defun longlines-restore ()
+;;        (if longlines-mode-was-active
+;;            (progn
+;;              (setq longlines-mode-was-active nil)
+;;              (longlines-mode 1))))
+;;      ;; longlines doesn't play well with ediff, so suspend it during diffs
+;;      (defadvice ediff-make-temp-file (before make-temp-file-suspend-ll
+;;                                              activate compile preactivate)
+;;        "Suspend longlines when running ediff."
+;;        (with-current-buffer (ad-get-arg 0)
+;;          (longlines-suspend)))
+;;      (add-hook 'ediff-cleanup-hook 
+;;                '(lambda ()
+;;                   (dolist (tmp-buf (list ediff-buffer-A
+;;                                          ediff-buffer-B
+;;                                          ediff-buffer-C))
+;;                     (if (buffer-live-p tmp-buf)
+;;                         (with-current-buffer tmp-buf
+;;                           (longlines-restore))))))))
+;; open confluence page
+(global-set-key "\C-xwf" 'confluence-get-page)
+;; setup confluence mode
+(add-hook 'confluence-mode-hook
+          '(lambda ()
+             (local-set-key "\C-xw" confluence-prefix-map)))
