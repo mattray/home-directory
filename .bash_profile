@@ -48,8 +48,8 @@ alias gitco="git co" #checkout
 alias gitd="git diff" #diff
 alias gitdc="git diff --cached" #diff original
 alias gitdh="git diff HEAD"  #diff head
-alias gitl="git log --oneline --decorate -5" #just the last 5 logs
-alias gitls="git log --stat --decorate -5" #just the last 5 logs with stats
+alias gitl="git log --oneline --decorate -20" #just the last 20 logs
+alias gitls="git log --stat --decorate -20" #just the last 20 logs with stats
 alias gitr="git checkout --" #revert
 alias gits="git status -s" #short status
 alias gits?="git status -s | grep -v \?\?" #ignore unknowns
@@ -65,7 +65,8 @@ alias grep="grep --color=auto"
 #show the file in OSX Finder
 alias reveal="open -R"
 
-alias finds="find . -type f | grep -v .svn | grep -v .git"
+#alias finds="find . -type f | grep -v .svn | grep -v .git"
+alias finds="echo use tree"
 
 pman () {
     man -t "${1}" | open -f -a /Applications/Preview.app
