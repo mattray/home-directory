@@ -1,14 +1,11 @@
-(setq default-frame-alist
-      '((top . 22) (left . 2)
-        (width . 187) (height . 59)))
-
+;;EMACS-WIDE SETTINGS
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 
-(require 'column-marker)
-(add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
-(add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
-;;toggle column 80 marker
-;;(global-set-key "\C-X8" 'column-marker-1 80)
+;;keep backup files in /tmp
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -22,13 +19,6 @@
  '(current-language-environment "ASCII")
  '(custom-browse-sort-alphabetically t)
  '(display-time-mode 1)
- '(ecb-auto-activate nil)
- '(ecb-layout-window-sizes (quote (("left8" (0.17714285714285713 . 0.4057971014492754) (0.17714285714285713 . 0.13043478260869565) (0.17714285714285713 . 0.34782608695652173) (0.17714285714285713 . 0.10144927536231885)))))
- '(ecb-options-version "2.32")
- '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
- '(ecb-tip-of-the-day nil)
- '(ecb-tree-indent 3)
- '(ecb-wget-setup (quote cons))
  '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
  '(frame-title-format "emacs %f" t)
  '(load-home-init-file t t)
@@ -36,7 +26,6 @@
  '(save-place t nil (saveplace))
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
- '(speedbar-sort-tags t)
  '(tool-bar-mode nil nil (tool-bar))
  '(transient-mark-mode t)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
@@ -46,7 +35,17 @@
  '(confluence-default-space-alist (list (cons confluence-url "TSE")))
  )
 
-;;OSX stuff
+;;show column markers
+(require 'column-marker)
+(add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
+(add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
+;;toggle column 80 marker
+;;(global-set-key "\C-X8" 'column-marker-1 80)
+
+;; OSX SETTINGS
+(setq default-frame-alist
+      '((top . 22) (left . 2)
+        (width . 187) (height . 59)))
 (set-frame-parameter (selected-frame) 'alpha '(99 95))
 (add-to-list 'exec-path "/usr/local/mysql/bin")
 (add-to-list 'exec-path "/opt/local/sbin")
@@ -58,20 +57,9 @@
 (server-start) ;; so it's listening for the emacsclient alias
 (setq ns-pop-up-frames nil) ;; keep OSX from opening more windows
 
-;;UI stuff
-(menu-bar-mode (if window-system 1 -1))
-(fset 'yes-or-no-p 'y-or-n-p)
-
-;;fonts
-;;(set-face-font 'menu "-*-monaco-medium-r-*--9-*-*-*-*-*-*-*")
-;;(set-face-font 'default "-*-monaco-medium-r-*--15-*-*-*-*-*-*-*")
-;;(set-face-font 'default "-*-andale mono-medium-r-*--15-*-*-*-*-*-*-*")
-;;(set-face-font 'default "-apple-inconsolata-bold-r-normal--18-180-72-72-m-180-iso10646-1")
-;;(set-face-font 'default "-*-inconsolata mono-medium-r-*--15-*-*-*-*-*-*-*")
-
+;; FONTS
 (set-face-font 'default "-*-bitstream vera sans mono-medium-r-*--18-*-*-*-*-*-*-*")
-;;(set-face-font 'menu "-misc-fixed-medium-*-*-*-12-*-*-*-*-*-*-*")
-;;(set-face-font 'default "-misc-fixed-medium-*-*-*-20-*-*-*-*-*-*-*")
+
 (defun jfb-set-mac-font (name  size)
   (interactive
    (list (completing-read "font-name: " (mapcar (lambda (n) (list n n)) (mapcar (lambda (p) (car p)) (x-font-family-list))) nil t)
@@ -83,7 +71,34 @@
                       :width  'normal
                       :height (* 10 size)))
 
-;;Key bindings
+;; UI SETTINGS
+;;color theme
+(require 'color-theme)
+(require 'color-theme-twilight-mattray)
+(color-theme-twilight-mattray)
+;;turn off menu bar
+(menu-bar-mode (if window-system 1 -1))
+;;'y' instead of 'yes'
+(fset 'yes-or-no-p 'y-or-n-p)
+;;sort buffer list by name
+(setq Buffer-menu-sort-column 2)
+;;skip startup message
+(setq inhibit-startup-message t)
+;;require a newline end of file
+(setq require-final-newline 'query)
+;;always use spaces, never tabs
+(setq-default indent-tabs-mode nil)
+;;(define-key text-mode-map (kbd "TAB") 'tab-to-tab-stop);
+(setq default-tab-width 2);
+;;Don't echo passwords when communicating with interactive programs:
+(add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
+;;unset C-z when in X-windows
+(when window-system
+  (global-unset-key "\C-z")) ; iconify-or-deiconify-frame (C-x C-z)
+;;you can lowercase a region
+(put 'downcase-region 'disabled nil)
+
+;; KEY BINDINGS
 ;;skip to line number
 (global-set-key "\C-Xg" 'goto-line)
 ;;toggle comment out block
@@ -97,81 +112,19 @@
 (global-set-key "\C-h" 'delete-backward-char)
 ;;toggle word-wrap
 (global-set-key "\C-xt" 'toggle-truncate-lines)
-
 ;;toggle word-wrap
 (global-set-key "\C-xd" 'dirs)
-
 ;;create frame
 (global-set-key "\M-~" 'new-frame)
 ;;next frame
 (global-set-key "\M-`" 'ns-next-frame)
-
 ;;text size
 (global-set-key "\M-+" 'text-scale-increase)
 (global-set-key "\M-_" 'text-scale-decrease)
 
-;;sort buffer list by name
-(setq Buffer-menu-sort-column 2)
-
-;;color theme
-(require 'color-theme)
-;;(color-theme-deep-blue-mray)
-;; (require 'color-theme-ir-black)
-;; (require 'color-theme-mattray)
-(require 'color-theme-twilight-mattray)
-(color-theme-twilight-mattray)
-;;(color-theme-solarized-dark)
-;;(color-theme-dark-blue2)
-;;(color-theme-subtle-hacker)
-
-
-;; turn on mouse wheel scrolling
-;; (defun sd-mousewheel-scroll-up (event)
-;;   "Scroll window under mouse up by five lines."
-;;   (interactive "e")
-;;   (let ((current-window (selected-window)))
-;;     (unwind-protect
-;;   (progn
-;;     (select-window (posn-window (event-start event)))
-;;     (scroll-up 2))
-;;       (select-window current-window))))
-;; (defun sd-mousewheel-scroll-down (event)
-;;   "Scroll window under mouse down by five lines."
-;;   (interactive "e")
-;;   (let ((current-window (selected-window)))
-;;     (unwind-protect
-;;   (progn
-;;     (select-window (posn-window (event-start event)))
-;;     (scroll-down 2))
-;;       (select-window current-window))))
-;; (global-set-key (kbd "<mouse-5>") 'sd-mousewheel-scroll-up)
-;; (global-set-key (kbd "<mouse-4>") 'sd-mousewheel-scroll-down)
-
-;;skip startup message
-(setq inhibit-startup-message t)
-
-;;require a newline end of file
-(setq require-final-newline 'query)
-
-
-;;always use spaces, never tabs
-(setq-default indent-tabs-mode nil)
-;;(define-key text-mode-map (kbd "TAB") 'tab-to-tab-stop);
-(setq default-tab-width 2);
-
-;;Don't echo passwords when communicating with interactive programs:
-(add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
-
-;;unset C-z when in X-windows
-(when window-system
-  (global-unset-key "\C-z")) ; iconify-or-deiconify-frame (C-x C-z)
-
-
-
-;; Ruby settings
+;;RUBY
 (require 'rvm)
 (rvm-use-default) ;; use rvm’s default ruby for the current Emacs session
-
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
@@ -180,86 +133,35 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
-
-;; ruby-mode
-;;(setq load-path (cons "~/.emacs.d/emacs-rails" load-path))
-;;(require 'rails)
-;;(require 'snippet)
-;;(autoload 'ruby-mode "ruby-mode" "Load ruby-mode" t)
-;;(setq auto-mode-alist  (cons '("\\.rb$" . ruby-mode) auto-mode-alist))
-;;(setq auto-mode-alist  (cons '("\\.rhtml$" . html-mode) auto-mode-alist))
-;;(add-hook 'ruby-mode-hook 'turn-on-font-lock)
+(setq ruby-deep-indent-paren nil)
 
 ;;JSON
-(setq auto-mode-alist  (cons '("\\.json$" . javascript-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
+(setq auto-mode-alist (cons '("\\.json$" . js-mode) auto-mode-alist))
 
+;;MARKDOWN
+(autoload 'markdown-mode "markdown-mode.el"
+  "Major mode for editing Markdown files" t)
+(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.text" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.seed" . conf-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.erb" . conf-mode) auto-mode-alist))
 
-;;JSP stuff
-;;(setq auto-mode-alist (cons '("\\.jsp$" . html-helper-mode) auto-mode-alist))
-;;(setq auto-mode-alist (cons '("\\.tag$" . html-helper-mode) auto-mode-alist))
-;;(setq auto-mode-alist (cons '("\\.xsd$" . sgml-mode) auto-mode-alist))
+;;YAML
+(autoload 'yaml-mode "yaml-mode.el" "Major mode for editing YAML files" t)
+(setq auto-mode-alist (cons '("\\.yml" . yaml-mode) auto-mode-alist))
 
-
-;;XML-Lite Mode
+;;XML-LITE
 ;;(global-set-key "\C-cx" 'xml-lite-mode)
 ;;(autoload 'xxml-mode-routine "xml-lite")
 ;;(add-hook 'sgml-mode-hook 'xxml-mode-routine)
 
-
-;;cedet stuff
-;; (add-to-list 'load-path "~/.emacs.d/cedet-1.0pre4")
-;; (load-file "~/.emacs.d/cedet-1.0pre4/common/cedet.el")
-;;(semantic-load-enable-code-helpers)
-;; (semantic-load-enable-excessive-code-helpers)
-;; (setq semanticdb-default-save-directory "~/.emacs/.semantic")
-;; (global-set-key "\C-co" 'ecb-goto-window-edit1)
-
-
-;;ECB goes here
-;; (add-to-list 'load-path "~/.emacs.d/ecb-2.32")
-;; (require 'ecb-autoloads)
-
-
-;;nXML
-;; (setq auto-mode-alist
-;;       (cons '("\\.\\(xml\\|xsl\\|rng\\|html\\|deki\\|xhtml\\)\\'" . nxml-mode)
-;;             auto-mode-alist))
-;;(load-library "autostart")
-
-
-;;(require 'mmm-mode)
-;;(require 'mmm-auto)
-;;(setq mmm-global-mode 'maybe)
-;;(setq mmm-submode-decoration-level 2)
-;;(set-face-background 'mmm-output-submode-face  "DarkSlateBlue")
-;;(set-face-background 'mmm-code-submode-face    "LightGrey")
-;;(set-face-background 'mmm-comment-submode-face "DarkOliveGreen")
-;; (mmm-add-classes
-;;  '((erb-code
-;;     :submode ruby-mode
-;;     :match-face (("<%#" . mmm-comment-submode-face)
-;;                  ("<%=" . mmm-output-submode-face)
-;;                  ("<%"  . mmm-code-submode-face))
-;;     :front "<%[#=]?"
-;;     :back "-?%>"
-;;     :insert ((?% erb-code       nil @ "<%"  @ " " _ " " @ "%>" @)
-;;              (?# erb-comment    nil @ "<%#" @ " " _ " " @ "%>" @)
-;;              (?= erb-expression nil @ "<%=" @ " " _ " " @ "%>" @))
-;;     )))
-;; (add-hook 'html-mode-hook
-;;           (lambda ()
-;;             (setq mmm-classes '(erb-code))
-;;             (mmm-mode-on)))
-;; (add-to-list 'auto-mode-alist '("\\.rhtml$" . html-mode))
-
-(put 'downcase-region 'disabled nil)
-
-;;whitespace
+;;WHITESPACE
 (require 'whitespace)
 (autoload 'whitespace-mode "whitespace" "Toggle whitespace visualization." t)
 (autoload 'whitespace-toggle-options "whitespace" "Toggle local `whitespace-mode' options." t)
 
-
+;;SHELL
 ;; Add color to a shell running in emacs ‘M-x shell’
 ;; (autoload 'ansi-color-for-comint-mode-on “ansi-color” nil t)
 ;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
@@ -272,21 +174,16 @@
 ;;; Shell mode
 
 ;; suppress shell echoes
-;; (defun my-comint-init ()
-;;   (setq comint-process-echoes t))
-;; (add-hook 'comint-mode-hook 'my-comint-init)
+(defun my-comint-init ()
+  (setq comint-process-echoes t))
+(add-hook 'comint-mode-hook 'my-comint-init)
 
 ;; make completion buffers disappear after 8 seconds.
 ;; (add-hook 'completion-setup-hook
 ;;   (lambda () (run-at-time 8 nil
 ;;     (lambda () (delete-windows-on "*Completions*")))))
 
-;;keep backup files in /tmp
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
-
+;;DIRED
 ;;install dired+.el for single dired window and colored directories
 (require 'dired+)
 (toggle-dired-find-file-reuse-dir 1)
@@ -341,18 +238,7 @@
              1 diredp-flag-mark t)
        ))
 
-;;Markdown mode 
-(autoload 'markdown-mode "markdown-mode.el"
-  "Major mode for editing Markdown files" t)
-(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.text" . markdown-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.seed" . conf-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.erb" . conf-mode) auto-mode-alist))
-
-;;YAML mode
-(autoload 'yaml-mode "yaml-mode.el" "Major mode for editing YAML files" t)
-(setq auto-mode-alist (cons '("\\.yml" . yaml-mode) auto-mode-alist))
-
+;;CONFLUENCE
 ;; assuming confluence.el and xml-rpc.el are in your load path
 (require 'confluence)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
