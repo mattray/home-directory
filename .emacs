@@ -90,8 +90,6 @@
 (setq-default indent-tabs-mode nil)
 ;;(define-key text-mode-map (kbd "TAB") 'tab-to-tab-stop);
 (setq default-tab-width 2);
-;;Don't echo passwords when communicating with interactive programs:
-(add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 ;;unset C-z when in X-windows
 (when window-system
   (global-unset-key "\C-z")) ; iconify-or-deiconify-frame (C-x C-z)
@@ -162,26 +160,18 @@
 (autoload 'whitespace-toggle-options "whitespace" "Toggle local `whitespace-mode' options." t)
 
 ;;SHELL
-;; Add color to a shell running in emacs ‘M-x shell’
-;; (autoload 'ansi-color-for-comint-mode-on “ansi-color” nil t)
-;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-
-;; Then set the colors:
-;;(custom-set-faces
-;; custom-set-faces was added by Custom — don’t edit or cut/paste it!
-;; Your init file should contain only one such instance.
-;;'(comint-highlight-prompt ((t (:foreground “white”)))))
-;;; Shell mode
+;;Don't echo passwords when communicating with interactive programs:
+(add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 
 ;; suppress shell echoes
-(defun my-comint-init ()
-  (setq comint-process-echoes t))
-(add-hook 'comint-mode-hook 'my-comint-init)
+;; (defun my-comint-init ()
+;;   (setq comint-process-echoes t))
+;; (add-hook 'comint-mode-hook 'my-comint-init)
 
 ;; make completion buffers disappear after 8 seconds.
-;; (add-hook 'completion-setup-hook
-;;   (lambda () (run-at-time 8 nil
-;;     (lambda () (delete-windows-on "*Completions*")))))
+(add-hook 'completion-setup-hook
+  (lambda () (run-at-time 8 nil
+    (lambda () (delete-windows-on "*Completions*")))))
 
 ;;DIRED
 ;;install dired+.el for single dired window and colored directories
