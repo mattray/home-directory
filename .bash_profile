@@ -72,11 +72,38 @@ pman () {
     man -t "${1}" | open -f -a /Applications/Preview.app
 }
 
-parse_git_branch() {
-git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+function git_branch {
+    git branch --no-color 2> /dev/null | egrep '^\*' | sed -e 's/^* //'
 }
 
-export PS1="\u@\h[\$(date +%H:%M)]\$(parse_git_branch) \w\n\$ "
+function git_dirty {
+  # only tracks modifications, not unknown files needing adds
+    if [ -z "`git status -s | awk '{print $1}' | grep '[ADMTU]'`" ] ; then
+        return 1
+    else
+        return 0
+    fi
+}
+
+function dirty_git_prompt {
+    branch=`git_branch`
+    if [ -z "${branch}" ] ; then
+        return
+    fi
+    git_dirty && echo "(${branch})"
+}
+
+function clean_git_prompt {
+    branch=`git_branch`
+    if [ -z "${branch}" ] ; then
+        return
+    fi
+    git_dirty || echo "(${branch})"
+}
+
+#export PS1="\u@\h[\$(date +%H:%M)]\$(git_branch) \w\n\$ "
+export PS1="\[\e[34m\]\u@\h\[\e[37m\][\$(date +%H:%M)]\[\e[32m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[37m\]\w\n\[\e[0m\]\$ "
 export rvm_cd_complete_flag=1
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
+. .creds
