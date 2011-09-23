@@ -1,5 +1,6 @@
 ;;EMACS-WIDE SETTINGS
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(add-to-list 'load-path (expand-file-name "/usr/local/share/emacs/site-lisp/"))
 
 ;;keep backup files in /tmp
 (setq backup-directory-alist
@@ -162,15 +163,17 @@
 ;;SHELL
 ;;Don't echo passwords when communicating with interactive programs:
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
+;;color output
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;; suppress shell echoes
 ;; (defun my-comint-init ()
 ;;   (setq comint-process-echoes t))
 ;; (add-hook 'comint-mode-hook 'my-comint-init)
 
-;; make completion buffers disappear after 8 seconds.
+;; make completion buffers disappear after 12 seconds.
 (add-hook 'completion-setup-hook
-  (lambda () (run-at-time 8 nil
+  (lambda () (run-at-time 12 nil
     (lambda () (delete-windows-on "*Completions*")))))
 
 ;;DIRED
@@ -278,3 +281,7 @@
 (add-hook 'confluence-mode-hook
           '(lambda ()
              (local-set-key "\C-xw" confluence-prefix-map)))
+
+;; Git
+(require 'magit)
+(require 'gist)
