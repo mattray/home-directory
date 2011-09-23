@@ -102,8 +102,8 @@ function clean_git_prompt {
 }
 
 #export PS1="\u@\h[\$(date +%H:%M)]\$(git_branch) \w\n\$ "
-export PS1="\[\e[34m\]\u@\h\[\e[37m\][\$(date +%H:%M)]\[\e[32m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[37m\]\w\n\[\e[0m\]\$ "
+export PS1="\[\e[34m\]\u@\h\[\e[37m\][\$(date +%H:%M)]\[\e[36m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[37m\]\w\n\[\e[0m\]\$ "
 export rvm_cd_complete_flag=1
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
-. .creds
+. ~/.creds
