@@ -283,5 +283,5 @@
              (local-set-key "\C-xw" confluence-prefix-map)))
 
 ;; Git
-(require 'magit)
+;;(require 'magit)
 (require 'gist)
