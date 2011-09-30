@@ -159,6 +159,7 @@
 (require 'whitespace)
 (autoload 'whitespace-mode "whitespace" "Toggle whitespace visualization." t)
 (autoload 'whitespace-toggle-options "whitespace" "Toggle local `whitespace-mode' options." t)
+(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
 ;;SHELL
 ;;Don't echo passwords when communicating with interactive programs:
@@ -267,7 +268,7 @@
 ;;        "Suspend longlines when running ediff."
 ;;        (with-current-buffer (ad-get-arg 0)
 ;;          (longlines-suspend)))
-;;      (add-hook 'ediff-cleanup-hook 
+;;      (add-hook 'ediff-cleanup-hook
 ;;                '(lambda ()
 ;;                   (dolist (tmp-buf (list ediff-buffer-A
 ;;                                          ediff-buffer-B
