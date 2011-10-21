@@ -133,6 +133,15 @@
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 (setq ruby-deep-indent-paren nil)
+;; ruby-block
+(require 'ruby-block)
+(ruby-block-mode t)
+;; do overlay
+(setq ruby-block-highlight-toggle 'overlay)
+;; display to minibuffer
+(setq ruby-block-highlight-toggle 'minibuffer)
+;; display to minibuffer and do overlay
+(setq ruby-block-highlight-toggle t)
 
 ;;JSON
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
