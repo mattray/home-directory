@@ -40,6 +40,7 @@
 (require 'column-marker)
 (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
+(add-hook 'markdown-mode-hook (lambda () (interactive) (column-marker-1 80)))
 ;;toggle column 80 marker
 ;;(global-set-key "\C-X8" 'column-marker-1 80)
 
