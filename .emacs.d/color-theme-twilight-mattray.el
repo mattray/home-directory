@@ -69,7 +69,7 @@
      (font-lock-warning-face ((t (:background "#EE799F" :foreground "red"))))
      (gui-element ((t (:background "#D4D0C8" :foreground "black"))))
 
-     (isearch ((t (:background "green" :foreground "black"))))
+     (isearch ((t (:background "green4" :foreground "black"))))
 
      ;;selection highlighting
      (region ((t (:background "#003355"))))
