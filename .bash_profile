@@ -5,28 +5,22 @@ export SVN_EDITOR=emacsclient
 
 export GITHOME=/usr/local/git
 
-export PATH=$HOME/bin:$MYSQL/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/usr/bin:/usr/bin/X11:/sbin:/usr/sbin:/usr/X11R6/bin/:$GITHOME/bin
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/usr/bin:/usr/bin/X11:/sbin:/usr/sbin:/usr/X11R6/bin/:$GITHOME/bin
 
 umask 077
 
 export HISTCONTROL=ignoredups
-export HISTFILESIZE=2000
-export HISTSIZE=2000
+export HISTFILESIZE=20000
+export HISTSIZE=20000
 
 if [ "dumb" == "$TERM" ];
     then
-    alias ls="ls -AF";
-    alias lsa="ls -lAF";
-    alias lsr="ls -lAFrt";
     alias m='cat';
     alias more='cat';
-    export PAGER=cat
+    export PAGER=cat;
+    export TERM="xterm-color"
 else
-    alias ls="ls -AFG";
-    alias lsa="ls -lAFG";
-    alias lsr="ls -lAFrtG";
     alias m='more'
-    export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}: ${PWD/#$HOME/~}\007"'
 fi
 
 export EDITOR=emacsclient
@@ -39,7 +33,10 @@ alias mv='mv -i'
 
 alias cl='clear'
 alias l='less'
-alias ls1='ls -1'
+alias ls="ls -AFG";
+alias ls1='ls -AFG1'
+alias lsa="ls -lAFG";
+alias lsr="ls -lAFrtG";
 
 alias curl="curl -sLO"
 

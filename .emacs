@@ -49,15 +49,15 @@
       '((top . 22) (left . 2)
         (width . 187) (height . 59)))
 (set-frame-parameter (selected-frame) 'alpha '(99 95))
-(add-to-list 'exec-path "/usr/local/mysql/bin")
-(add-to-list 'exec-path "/opt/local/sbin")
-(add-to-list 'exec-path (getenv "PATH"))
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 (server-start) ;; so it's listening for the emacsclient alias
 (setq ns-pop-up-frames nil) ;; keep OSX from opening more windows
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
 ;;per http://www.masteringemacs.org/articles/2011/10/02/improving-performance-emacs-display-engine/
 (setq redisplay-dont-pause t)
@@ -179,11 +179,13 @@
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 ;;color output
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+;;clean up shell output by stripping ctrl-m
+(add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
 
 ;; suppress shell echoes
-;; (defun my-comint-init ()
-;;   (setq comint-process-echoes t))
-;; (add-hook 'comint-mode-hook 'my-comint-init)
+(defun my-comint-init ()
+  (setq comint-process-echoes t))
+(add-hook 'comint-mode-hook 'my-comint-init)
 
 ;; make completion buffers disappear after 12 seconds.
 (add-hook 'completion-setup-hook

@@ -1,1 +1,1 @@
-export PS1="\[\e[34m\]\u@\h\[\e[37m\][\$(date +%H:%M)]\[\e[32m\]+$(~/.rvm/bin/rvm-prompt v)\[\e[36m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[37m\]\w\n\[\e[0m\]\$ "
+export PS1="\[\e[34m\]\u@\h\[\e[37m\][\$(date +%H:%M)]\[\e[32m\]+$(~/.rvm/bin/rvm-prompt v g)\[\e[36m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[37m\]\w\n\[\e[0m\]\$ "
