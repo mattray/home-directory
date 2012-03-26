@@ -48,6 +48,7 @@
 (setq default-frame-alist
       '((top . 22) (left . 2)
         (width . 187) (height . 59)))
+(global-set-key (kbd "M-RET") 'ns-toggle-fullscreen)
 (set-frame-parameter (selected-frame) 'alpha '(99 95))
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
@@ -155,6 +156,7 @@
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.text" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.seed" . conf-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.erb" . conf-mode) auto-mode-alist))
