@@ -305,6 +305,6 @@
 (require 'gist)
 
 ;; Showoff https://github.com/developernotes/showoff-mode
-(add-to-list 'load-path "~/.emacs.d/showoff-mode")
-(require 'showoff-mode)
+;; (add-to-list 'load-path "~/.emacs.d/showoff-mode")
+;; (require 'showoff-mode)
 ;;(add-to-list 'auto-mode-alist '("\\.md$" . showoff-mode))
