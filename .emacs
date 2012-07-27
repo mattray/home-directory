@@ -64,7 +64,8 @@
 (setq redisplay-dont-pause t)
 
 ;; FONTS
-(set-face-font 'default "-*-bitstream vera sans mono-medium-r-*--18-*-*-*-*-*-*-*")
+;;(set-face-font 'default "-*-bitstream vera sans mono-medium-r-*--18-*-*-*-*-*-*-*")
+(set-face-font 'default "-apple-inconsolata-medium-r-normal--20-*-*-*-*-*-*-*")
 
 (defun jfb-set-mac-font (name  size)
   (interactive
@@ -133,9 +134,12 @@
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Berksfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Cheffile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Kitchenfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 (setq ruby-deep-indent-paren nil)
 ;; ruby-block
@@ -147,6 +151,26 @@
 (setq ruby-block-highlight-toggle 'minibuffer)
 ;; display to minibuffer and do overlay
 (setq ruby-block-highlight-toggle t)
+(require 'flymake)
+;; Invoke ruby with '-c' to get syntax checking
+(defun flymake-ruby-init ()
+  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+         (local-file  (file-relative-name
+                       temp-file
+                       (file-name-directory buffer-file-name))))
+    (list "ruby" (list "-c" local-file))))
+(push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("Berksfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("Cheffile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("Cheffile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("Kitchenfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("Procfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("Thorfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("Vagrantfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(add-hook 'ruby-mode-hook
+	      (lambda () (flymake-mode t)))
 
 ;;JSON
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
@@ -191,8 +215,8 @@
 
 ;; make completion buffers disappear after 12 seconds.
 (add-hook 'completion-setup-hook
-  (lambda () (run-at-time 12 nil
-    (lambda () (delete-windows-on "*Completions*")))))
+          (lambda () (run-at-time 12 nil
+                                  (lambda () (delete-windows-on "*Completions*")))))
 
 ;;DIRED
 ;;install dired+.el for single dired window and colored directories
