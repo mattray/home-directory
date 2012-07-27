@@ -38,6 +38,10 @@
 
 ;;; Code:
 
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/gh.el.git"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/pcache"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/logito"))
+
 (eval-when-compile
   (require 'cl))
 
