@@ -1,0 +1,5 @@
+#!/bin/sh
+
+knife node delete $1 -y
+knife client delete $1 -y
+sed -i '' "/^$1/d" ~/.ssh/known_hosts
