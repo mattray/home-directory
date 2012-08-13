@@ -171,6 +171,8 @@
 (push '("Vagrantfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
 (add-hook 'ruby-mode-hook
 	      (lambda () (flymake-mode t)))
+(add-hook 'ruby-mode-hook
+	      (lambda () (linum-mode t)))
 
 ;;JSON
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
