@@ -2,4 +2,6 @@
 
 knife node delete $1 -y
 knife client delete $1 -y
-sed -i '' "/^$1/d" ~/.ssh/known_hosts
+host=`echo $1 | cut -d"." -f1`
+echo $host
+sed -i '' "/^$host/d" ~/.ssh/known_hosts
