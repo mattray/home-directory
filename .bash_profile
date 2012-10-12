@@ -5,7 +5,7 @@ export SVN_EDITOR=emacsclient
 
 export GITHOME=/usr/local/git
 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/usr/bin:/usr/bin/X11:/sbin:/usr/sbin:/usr/X11R6/bin/:$GITHOME/bin
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/usr/bin:/usr/bin/X11:/sbin:/usr/sbin:/usr/X11R6/bin/:$GITHOME/bin:/usr/texbin
 
 umask 077
 
