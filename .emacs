@@ -173,6 +173,18 @@
 	      (lambda () (flymake-mode t)))
 (add-hook 'ruby-mode-hook
 	      (lambda () (linum-mode t)))
+(defun senny-ruby-interpolate ()
+  "In a double quoted string, interpolate."
+  (interactive)
+  (insert "#")
+  (when (and
+         (looking-back "\".*")
+         (looking-at ".*\""))
+    (insert "{}")
+    (backward-char 1)))
+(eval-after-load 'ruby-mode
+  '(progn
+     (define-key ruby-mode-map (kbd "#") 'senny-ruby-interpolate)))
 
 ;;JSON
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
