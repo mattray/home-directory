@@ -5,7 +5,7 @@ export SVN_EDITOR=emacsclient
 
 export GITHOME=/usr/local/git
 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/usr/bin:/usr/bin/X11:/sbin:/usr/sbin:/usr/X11R6/bin/:$GITHOME/bin:/usr/texbin
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/usr/bin:/usr/bin/X11:/sbin:/usr/sbin:/usr/X11R6/bin:$GITHOME/bin:/usr/texbin
 
 umask 077
 
@@ -104,3 +104,4 @@ export rvm_cd_complete_flag=1
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 . ~/.creds
+rvm 1.9.3
