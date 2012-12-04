@@ -24,7 +24,7 @@ else
 fi
 
 export EDITOR=emacsclient
-alias emacs='emacsclient -n "$@" &'
+alias emacs='emacsclient -n'
 
 # Some more alias to avoid making mistakes:
 alias rm='rm -i'
