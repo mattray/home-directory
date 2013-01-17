@@ -13,6 +13,11 @@ export HISTCONTROL=ignoredups
 export HISTFILESIZE=20000
 export HISTSIZE=20000
 
+# Ignore commands starting with a space, duplicates,
+# and a few others.
+export HISTIGNORE="[ ]*:&:bg:fg:ls -l:ls -al:ls -la:ls1:lsa:lsr:gits:gits?"
+
+
 if [ "dumb" == "$TERM" ];
     then
     alias m='cat';
@@ -37,8 +42,6 @@ alias ls="ls -AFG";
 alias ls1='ls -AFG1'
 alias lsa="ls -lAFG";
 alias lsr="ls -lAFrtG";
-
-alias curl="curl -sLO"
 
 alias gitb="git branch" #list branches
 alias gitco="git co" #checkout
