@@ -127,6 +127,15 @@
 (global-set-key "\M-+" 'text-scale-increase)
 (global-set-key "\M-_" 'text-scale-decrease)
 
+;;utf-8
+(setq enable-local-variables nil)
+;; (define-coding-system-alias 'UTF-8 'utf-8)
+;; (setq locale-coding-system 'utf-8)
+;; (set-terminal-coding-system 'utf-8)
+;; (set-keyboard-coding-system 'utf-8)
+;; (set-selection-coding-system 'utf-8)
+;; (prefer-coding-system 'utf-8)
+
 ;;RUBY
 (require 'rvm)
 (rvm-use-default) ;; use rvm’s default ruby for the current Emacs session
@@ -185,6 +194,10 @@
 (eval-after-load 'ruby-mode
   '(progn
      (define-key ruby-mode-map (kbd "#") 'senny-ruby-interpolate)))
+
+(global-set-key "\M-pd" "require 'pry'
+binding.pry
+"))
 
 ;;JSON
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
