@@ -197,7 +197,7 @@
 
 (global-set-key "\M-pd" "require 'pry'
 binding.pry
-"))
+")
 
 ;;JSON
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
