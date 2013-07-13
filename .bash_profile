@@ -43,9 +43,12 @@ alias ls1='ls -AFG1'
 alias lsa="ls -lAFG";
 alias lsr="ls -lAFrtG";
 
+alias gem_push="echo double check your permissions"
+alias rspec="rspec --format documentation"
+
 alias gitb="git branch" #list branches
 alias gitco="git co" #checkout
-alias gitd="git diff" #diff
+alias gitd="git diff --patience" #diff
 alias gitdc="git diff --cached" #diff original
 alias gitdh="git diff HEAD"  #diff head
 alias gitl="git log --oneline --decorate -20" #just the last 20 logs
@@ -55,6 +58,8 @@ alias gits="git status -s" #short status
 alias gits?="git status -s | grep -v \?\?" #ignore unknowns
 alias gitst="git status" #long status
 alias gitus="git unstage" #unstage a change alias was set with 'git config --global alias.unstage "reset HEAD"'
+
+export GIT_EDITOR="`which emacsclient` $EMACS_SERVER_FILE"
 
 alias svns="svn status | sort"
 alias svnu="svn update"
@@ -108,3 +113,5 @@ export rvm_cd_complete_flag=1
 
 . ~/.creds
 rvm 1.9.3
+
+export KITCHEN_LOG='DEBUG'
