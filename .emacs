@@ -143,6 +143,7 @@
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.erb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Berksfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Cheffile$" . ruby-mode))
@@ -150,6 +151,7 @@
 (add-to-list 'auto-mode-alist '("Kitchenfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+
 (setq ruby-deep-indent-paren nil)
 ;; ruby-block
 (require 'ruby-block)
@@ -209,8 +211,6 @@ binding.pry
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.text" . markdown-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.seed" . conf-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.erb" . conf-mode) auto-mode-alist))
 
 ;;YAML
 (autoload 'yaml-mode "yaml-mode.el" "Major mode for editing YAML files" t)
