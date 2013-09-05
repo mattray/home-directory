@@ -20,10 +20,10 @@ export HISTIGNORE="[ ]*:&:bg:fg:ls -l:ls -al:ls -la:ls1:lsa:lsr:gits:gits?"
 
 if [ "dumb" == "$TERM" ];
     then
-    alias m='cat';
-    alias more='cat';
-    export PAGER=cat;
-    export TERM="xterm-color"
+    alias m='cat'
+    alias more='cat'
+    export PAGER=cat
+    export TERM=xterm-256color
 else
     alias m='more'
 fi
@@ -38,10 +38,10 @@ alias mv='mv -i'
 
 alias cl='clear'
 alias l='less'
-alias ls="ls -AFG";
+alias ls="ls -AFG"
 alias ls1='ls -AFG1'
-alias lsa="ls -lAFG";
-alias lsr="ls -lAFrtG";
+alias lsa="ls -lAFG"
+alias lsr="ls -lAFrtG"
 
 alias gem_push="echo double check your permissions"
 alias rspec="rspec --format documentation"
@@ -69,6 +69,14 @@ alias grep="grep --color=auto"
 
 #show the file in OSX Finder
 alias reveal="open -R"
+
+#test-kitchen
+alias tk="kitchen"
+#export KITCHEN_LOG='error'
+#export OMNIBUS_INSTALL_URL='file:///root/chef/install.sh'
+
+#growl message
+alias gdone='growlnotify -a growl -m `date "+DONE:$? %H:%M:%S"`'
 
 #alias finds="find . -type f | grep -v .svn | grep -v .git"
 alias finds="echo use tree"
@@ -114,4 +122,3 @@ export rvm_cd_complete_flag=1
 . ~/.creds
 rvm 1.9.3
 
-export KITCHEN_LOG='DEBUG'
