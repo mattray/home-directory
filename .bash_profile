@@ -23,7 +23,7 @@ if [ "dumb" == "$TERM" ];
     alias m='cat'
     alias more='cat'
     export PAGER=cat
-    export TERM=xterm-256color
+    export TERM=xterm-color
 else
     alias m='more'
 fi
