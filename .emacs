@@ -151,6 +151,7 @@
 (add-to-list 'auto-mode-alist '("Kitchenfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . ruby-mode))
 
 (setq ruby-deep-indent-paren nil)
 ;; ruby-block
