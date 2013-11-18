@@ -28,6 +28,7 @@
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
  '(tool-bar-mode nil nil (tool-bar))
+ '(standard-display-ascii ?\t "^I")
  '(transient-mark-mode t)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(visible-bell f)
@@ -205,6 +206,7 @@ binding.pry
 ;;JSON
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
 (setq auto-mode-alist (cons '("\\.json$" . js-mode) auto-mode-alist))
+(setq js-indent-level 2)
 
 ;;MARKDOWN
 (autoload 'markdown-mode "markdown-mode.el"
