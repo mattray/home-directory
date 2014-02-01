@@ -70,7 +70,7 @@ alias reveal="open -R"
 #export OMNIBUS_INSTALL_URL='file:///root/chef/install.sh'
 
 #notification message
-alias ndone='/Applications/Utilities/terminal-notifier.app/Contents/MacOS/terminal-notifier -title ndone -message `date "+$?:%H:%M:%S"`'
+alias ndone='/Applications/Utilities/terminal-notifier.app/Contents/MacOS/terminal-notifier -title ndone -message `date "+$?:%H:%M:%S"` >> /dev/null'
 
 pman () {
     man -t "${1}" | open -f -a /Applications/Preview.app
