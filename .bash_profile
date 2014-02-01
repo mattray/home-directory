@@ -1,12 +1,7 @@
 #This file is sourced by bash when you log in interactively.
-#[ -f ~/.bashrc ] && . ~/.bashrc
+[ -f ~/.bashrc ] && . ~/.bashrc
 
-export SVN_EDITOR=emacsclient
-
-export GITHOME=/usr/local/git
-
-export PATH=$HOME/bin:$HOME/Library/Python/2.7/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/usr/bin:/usr/bin/X11:/sbin:/usr/sbin:/usr/X11R6/bin:$GITHOME/bin:/usr/texbin:$HOME/bin/packer-0.3.10
-
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/usr/bin:/usr/bin/X11:/sbin:/usr/sbin:$HOME/bin/packer-0.3.10
 umask 077
 
 export HISTCONTROL=ignoredups
@@ -16,7 +11,6 @@ export HISTSIZE=20000
 # Ignore commands starting with a space, duplicates,
 # and a few others.
 export HISTIGNORE="[ ]*:&:bg:fg:ls -l:ls -al:ls -la:ls1:lsa:lsr:gits:gits?"
-
 
 if [ "dumb" == "$TERM" ];
     then
@@ -71,15 +65,12 @@ alias grep="grep --color=auto"
 alias reveal="open -R"
 
 #test-kitchen
-alias tk="kitchen"
+#alias tk="kitchen"
 #export KITCHEN_LOG='error'
 #export OMNIBUS_INSTALL_URL='file:///root/chef/install.sh'
 
-#growl message
-alias gdone='growlnotify -a growl -m `date "+DONE:$? %H:%M:%S"`'
-
-#alias finds="find . -type f | grep -v .svn | grep -v .git"
-alias finds="echo use tree"
+#notification message
+alias ndone='/Applications/Utilities/terminal-notifier.app/Contents/MacOS/terminal-notifier -title ndone -message `date "+$?:%H:%M:%S"`'
 
 pman () {
     man -t "${1}" | open -f -a /Applications/Preview.app
@@ -103,7 +94,7 @@ function dirty_git_prompt {
     if [ -z "${branch}" ] ; then
         return
     fi
-    git_dirty && echo "(${branch})"
+    git_dirty && echo "(${branch}*)"
 }
 
 function clean_git_prompt {
@@ -114,11 +105,16 @@ function clean_git_prompt {
     git_dirty || echo "(${branch})"
 }
 
-#export PS1="\u@\h[\$(date +%H:%M)]\$(git_branch) \w\n\$ "
-export PS1="\[\e[34m\]\u@\h\[\e[37m\][\$(date +%H:%M)]\[\e[36m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[37m\]\w\n\[\e[0m\]\$ "
-export rvm_cd_complete_flag=1
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+chruby ruby-1.9
+
+function chruby_version {
+    newruby=$(chruby | grep \* | cut -d'-' -f 2)
+    if [ -z "${newruby}" ] ; then
+        return
+    fi
+    echo "${newruby}"
+}
+
+export PS1="\[\e[36m\]\u@\h\[\e[37m\][\A]\[\e[31m\]\$(chruby_version)\[\e[37m\]\[\e[32m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[34m\]\w\n\[\e[0m\]\$\[\e[0m\] "
 
 . ~/.creds
-rvm 1.9.3
-
