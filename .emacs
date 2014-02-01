@@ -2,6 +2,9 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "/usr/local/share/emacs/site-lisp/"))
 
+;; starting location
+(setq default-directory (concat (getenv "HOME") "/"))
+
 ;;keep backup files in /tmp
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
@@ -47,9 +50,8 @@
 
 ;; OSX SETTINGS
 (setq default-frame-alist
-      '((top . 22) (left . 2)
-        (width . 187) (height . 59)))
-(global-set-key (kbd "M-RET") 'ns-toggle-fullscreen)
+      '((top . 25) (left . 1)
+        (width . 125) (height . 35)))
 (set-frame-parameter (selected-frame) 'alpha '(99 95))
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
@@ -57,9 +59,6 @@
 (setq mac-option-modifier nil)
 (server-start) ;; so it's listening for the emacsclient alias
 (setq ns-pop-up-frames nil) ;; keep OSX from opening more windows
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
 
 ;;per http://www.masteringemacs.org/articles/2011/10/02/improving-performance-emacs-display-engine/
 (setq redisplay-dont-pause t)
@@ -130,16 +129,11 @@
 
 ;;utf-8
 (setq enable-local-variables nil)
-;; (define-coding-system-alias 'UTF-8 'utf-8)
-;; (setq locale-coding-system 'utf-8)
-;; (set-terminal-coding-system 'utf-8)
-;; (set-keyboard-coding-system 'utf-8)
-;; (set-selection-coding-system 'utf-8)
-;; (prefer-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
 ;;RUBY
-(require 'rvm)
-(rvm-use-default) ;; use rvm’s default ruby for the current Emacs session
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
@@ -357,8 +351,3 @@ binding.pry
 ;; Git
 ;;(require 'magit)
 (require 'gist)
-
-;; Showoff https://github.com/developernotes/showoff-mode
-;; (add-to-list 'load-path "~/.emacs.d/showoff-mode")
-;; (require 'showoff-mode)
-;;(add-to-list 'auto-mode-alist '("\\.md$" . showoff-mode))
