@@ -115,6 +115,21 @@ function chruby_version {
     echo "${newruby}"
 }
 
-export PS1="\[\e[36m\]\u@\h\[\e[37m\][\A]\[\e[31m\]\$(chruby_version)\[\e[37m\]\[\e[32m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[34m\]\w\n\[\e[0m\]\$\[\e[0m\] "
+function chgemsets {
+    chgemset_name=$(echo $GEM_HOME | awk '{split($0,a,"/.gem"); print a[1]}' | awk -F/ '{print $NF}')
+    if [ $USER = $chgemset_name ] ; then
+        echo "-"
+    else
+        echo "-${chgemset_name}"
+    fi
+}
+
+
+export PS1="\[\e[36m\]\u@\h\[\e[37m\][\A]\[\e[31m\]\$(chruby_version)\$(chgemsets)\[\e[37m\]\[\e[32m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[34m\]\w\n\[\e[0m\]\$\[\e[0m\] "
+
+gemset () {
+    echo "${1}"
+    chgems "${1}"
+}
 
 . ~/.creds
