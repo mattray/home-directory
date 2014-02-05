@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/usr/bin:/usr/bin/X11:/sbin:/usr/sbin:$HOME/bin/packer-0.3.10
+export PATH=$PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/usr/bin:/usr/bin/X11:/sbin:/usr/sbin:$HOME/bin/packer-0.3.10
 
 umask 077
 
@@ -59,7 +59,7 @@ alias grep="grep --color=auto"
 alias reveal="open -R"
 
 #notification message
-alias ndone='/Applications/Utilities/terminal-notifier.app/Contents/MacOS/terminal-notifier -title ndone -message `date "+$?:%H:%M:%S"` >> /dev/null'
+alias ndone='/Applications/Utilities/terminal-notifier.app/Contents/MacOS/terminal-notifier -title DONE -message `date "+$?:%H:%M:%S"` >> /dev/null'
 
 pman () {
     man -t "${1}" | open -f -a /Applications/Preview.app
