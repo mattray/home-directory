@@ -1,4 +1,4 @@
-export PATH=$PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/usr/bin:/usr/bin/X11:/sbin:/usr/sbin:$HOME/bin/packer-0.3.10
+export PATH=$HOME/bin:$HOME/bin/packer-0.3.10:$PATH
 
 umask 077
 
