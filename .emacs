@@ -45,8 +45,6 @@
 (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-hook 'markdown-mode-hook (lambda () (interactive) (column-marker-1 80)))
-;;toggle column 80 marker
-;;(global-set-key "\C-X8" 'column-marker-1 80)
 
 ;; OSX SETTINGS
 (setq default-frame-alist
@@ -59,9 +57,6 @@
 (setq mac-option-modifier nil)
 (server-start) ;; so it's listening for the emacsclient alias
 (setq ns-pop-up-frames nil) ;; keep OSX from opening more windows
-
-;;per http://www.masteringemacs.org/articles/2011/10/02/improving-performance-emacs-display-engine/
-(setq redisplay-dont-pause t)
 
 ;; FONTS
 ;;(set-face-font 'default "-*-bitstream vera sans mono-medium-r-*--18-*-*-*-*-*-*-*")
@@ -80,6 +75,7 @@
 
 ;; UI SETTINGS
 ;;color theme
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/color-theme-6.6.0"))
 (require 'color-theme)
 (require 'color-theme-twilight-mattray)
 (color-theme-twilight-mattray)
@@ -145,8 +141,7 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Kitchenfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Vagrantfile*" . ruby-mode))
 
 (setq ruby-deep-indent-paren nil)
 ;; ruby-block
@@ -158,6 +153,7 @@
 (setq ruby-block-highlight-toggle 'minibuffer)
 ;; display to minibuffer and do overlay
 (setq ruby-block-highlight-toggle t)
+
 (require 'flymake)
 ;; Invoke ruby with '-c' to get syntax checking
 (defun flymake-ruby-init ()
@@ -177,9 +173,9 @@
 (push '("Thorfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
 (push '("Vagrantfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
 (add-hook 'ruby-mode-hook
-	      (lambda () (flymake-mode t)))
+          (lambda () (flymake-mode t)))
 (add-hook 'ruby-mode-hook
-	      (lambda () (linum-mode t)))
+          (lambda () (linum-mode t)))
 (defun senny-ruby-interpolate ()
   "In a double quoted string, interpolate."
   (interactive)
@@ -203,14 +199,12 @@ binding.pry
 (setq js-indent-level 2)
 
 ;;MARKDOWN
-(autoload 'markdown-mode "markdown-mode.el"
-  "Major mode for editing Markdown files" t)
+(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.text" . markdown-mode) auto-mode-alist))
 
 ;;YAML
-(autoload 'yaml-mode "yaml-mode.el" "Major mode for editing YAML files" t)
+(autoload 'yaml-mode "yaml-mode" "Major mode for editing YAML files" t)
 (setq auto-mode-alist (cons '("\\.yml" . yaml-mode) auto-mode-alist))
 
 ;;XML-LITE
@@ -219,9 +213,6 @@ binding.pry
 ;;(add-hook 'sgml-mode-hook 'xxml-mode-routine)
 
 ;;WHITESPACE
-(require 'whitespace)
-(autoload 'whitespace-mode "whitespace" "Toggle whitespace visualization." t)
-(autoload 'whitespace-toggle-options "whitespace" "Toggle local `whitespace-mode' options." t)
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
 ;;SHELL
@@ -242,10 +233,10 @@ binding.pry
           (lambda () (run-at-time 12 nil
                                   (lambda () (delete-windows-on "*Completions*")))))
 
-;;DIRED
+;;DIRED+
 ;;install dired+.el for single dired window and colored directories
 (require 'dired+)
-(toggle-dired-find-file-reuse-dir 1)
+(toggle-diredp-find-file-reuse-dir 1)
 (setq diredp-font-lock-keywords-1
       (list
        '("^  \\(.+:\\)$" 1 diredp-dir-heading) ; Directory headers
@@ -297,57 +288,10 @@ binding.pry
              1 diredp-flag-mark t)
        ))
 
-;;CONFLUENCE
-;; assuming confluence.el and xml-rpc.el are in your load path
-(require 'confluence)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; confluence editing support (with longlines mode)
-;;(autoload 'confluence-get-page "confluence" nil t)
-;; (eval-after-load "confluence"
-;;   '(progn
-;;      (require 'longlines)
-;;      (progn
-;;        (add-hook 'confluence-mode-hook 'longlines-mode)
-;;        (add-hook 'confluence-before-save-hook 'longlines-before-revert-hook)
-;;        (add-hook 'confluence-before-revert-hook 'longlines-before-revert-hook)
-;;        (add-hook 'confluence-mode-hook '(lambda () (local-set-key "\C-j" 'confluence-newline-and-indent))))))
-;; LongLines mode: http://www.emacswiki.org/emacs-en/LongLines
-;; (autoload 'longlines-mode "longlines" "LongLines Mode." t)
-;; (eval-after-load "longlines"
-;;   '(progn
-;;      (defvar longlines-mode-was-active nil)
-;;      (make-variable-buffer-local 'longlines-mode-was-active)
-;;      (defun longlines-suspend ()
-;;        (if longlines-mode
-;;            (progn
-;;              (setq longlines-mode-was-active t)
-;;              (longlines-mode 0))))
-;;      (defun longlines-restore ()
-;;        (if longlines-mode-was-active
-;;            (progn
-;;              (setq longlines-mode-was-active nil)
-;;              (longlines-mode 1))))
-;;      ;; longlines doesn't play well with ediff, so suspend it during diffs
-;;      (defadvice ediff-make-temp-file (before make-temp-file-suspend-ll
-;;                                              activate compile preactivate)
-;;        "Suspend longlines when running ediff."
-;;        (with-current-buffer (ad-get-arg 0)
-;;          (longlines-suspend)))
-;;      (add-hook 'ediff-cleanup-hook
-;;                '(lambda ()
-;;                   (dolist (tmp-buf (list ediff-buffer-A
-;;                                          ediff-buffer-B
-;;                                          ediff-buffer-C))
-;;                     (if (buffer-live-p tmp-buf)
-;;                         (with-current-buffer tmp-buf
-;;                           (longlines-restore))))))))
-;; open confluence page
-(global-set-key "\C-xwf" 'confluence-get-page)
-;; setup confluence mode
-(add-hook 'confluence-mode-hook
-          '(lambda ()
-             (local-set-key "\C-xw" confluence-prefix-map)))
-
-;; Git
-;;(require 'magit)
-(require 'gist)
+;; GIT
+;; install Marmalade repo for gist
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" .
+               "http://marmalade-repo.org/packages/"))
+(package-initialize)
