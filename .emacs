@@ -45,6 +45,8 @@
 (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-hook 'markdown-mode-hook (lambda () (interactive) (column-marker-1 80)))
+(add-hook 'diff-mode-hook (lambda () (interactive) (column-marker-1 80)))
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . diff-mode))
 
 ;; OSX SETTINGS
 (setq default-frame-alist
