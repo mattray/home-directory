@@ -9,9 +9,19 @@ for project in ~/ws/os/*/; do
     git co master;
     git pull --rebase stackforge master;
     git co -;
-    git co stable/grizzly;
-    git pull --rebase stackforge stable/grizzly;
-    git push origin master;
-    git co -;
+    if [ "$project" != "/Users/mray/ws/os/ceph/" ]
+    then
+        if [ "$project" != "/Users/mray/ws/os/integration-test/" ]
+        then
+            git co stable/grizzly;
+            git pull --rebase stackforge stable/grizzly;
+            git push origin master;
+            git co -;
+        fi
+        git co stable/havana;
+        git pull --rebase stackforge stable/havana;
+        git push origin master;
+        git co -;
+    fi
     git stash pop;
 done
