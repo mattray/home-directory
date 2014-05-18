@@ -1,11 +1,11 @@
-;;EMACS-WIDE SETTINGS
+;; EMACS-WIDE SETTINGS
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "/usr/local/share/emacs/site-lisp/"))
 
 ;; starting location
 (setq default-directory (concat (getenv "HOME") "/"))
 
-;;keep backup files in /tmp
+;; keep backup files in /tmp
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
@@ -40,7 +40,7 @@
  '(confluence-default-space-alist (list (cons confluence-url "TSE")))
  )
 
-;;show column markers
+;; show column markers
 (require 'column-marker)
 (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
@@ -61,7 +61,7 @@
 (setq ns-pop-up-frames nil) ;; keep OSX from opening more windows
 
 ;; FONTS
-;;(set-face-font 'default "-*-bitstream vera sans mono-medium-r-*--18-*-*-*-*-*-*-*")
+;; (set-face-font 'default "-*-bitstream vera sans mono-medium-r-*--18-*-*-*-*-*-*-*")
 (set-face-font 'default "-apple-inconsolata-medium-r-normal--20-*-*-*-*-*-*-*")
 
 (defun jfb-set-mac-font (name  size)
@@ -76,62 +76,62 @@
                       :height (* 10 size)))
 
 ;; UI SETTINGS
-;;color theme
+;; color theme
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/color-theme-6.6.0"))
 (require 'color-theme)
 (require 'color-theme-twilight-mattray)
 (color-theme-twilight-mattray)
-;;turn off menu bar
+;; turn off menu bar
 (menu-bar-mode (if window-system 1 -1))
-;;'y' instead of 'yes'
+;; 'y' instead of 'yes'
 (fset 'yes-or-no-p 'y-or-n-p)
-;;sort buffer list by name
+;; sort buffer list by name
 (setq Buffer-menu-sort-column 2)
-;;skip startup message
+;; skip startup message
 (setq inhibit-startup-message t)
-;;require a newline end of file
+;; require a newline end of file
 (setq require-final-newline 'query)
-;;always use spaces, never tabs
+;; always use spaces, never tabs
 (setq-default indent-tabs-mode nil)
-;;(define-key text-mode-map (kbd "TAB") 'tab-to-tab-stop);
+;; (define-key text-mode-map (kbd "TAB") 'tab-to-tab-stop);
 (setq default-tab-width 2);
-;;unset C-z when in X-windows
+;; unset C-z when in X-windows
 (when window-system
   (global-unset-key "\C-z")) ; iconify-or-deiconify-frame (C-x C-z)
-;;you can lowercase a region
+;; you can lowercase a region
 (put 'downcase-region 'disabled nil)
 
 ;; KEY BINDINGS
-;;skip to line number
+;; skip to line number
 (global-set-key "\C-Xg" 'goto-line)
-;;toggle comment out block
+;; toggle comment out block
 (global-set-key "\C-cc" 'comment-region)
 (global-set-key "\C-cu" 'uncomment-region)
-;;indent-region
+;; indent-region
 (global-set-key "\C-ci" 'indent-region)
-;;insert another buffer
+;; insert another buffer
 (global-set-key "\C-cb" 'insert-buffer)
-;;set C-h to delete
+;; set C-h to delete
 (global-set-key "\C-h" 'delete-backward-char)
-;;toggle word-wrap
+;; toggle word-wrap
 (global-set-key "\C-xt" 'toggle-truncate-lines)
-;;toggle word-wrap
+;; toggle word-wrap
 (global-set-key "\C-xd" 'dirs)
-;;create frame
+;; create frame
 (global-set-key "\M-~" 'new-frame)
-;;next frame
+;; next frame
 (global-set-key "\M-`" 'ns-next-frame)
-;;text size
+;; text size
 (global-set-key "\M-+" 'text-scale-increase)
 (global-set-key "\M-_" 'text-scale-decrease)
 
-;;utf-8
+;; utf-8
 (setq enable-local-variables nil)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-;;RUBY
+;; RUBY
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
@@ -195,34 +195,59 @@
 binding.pry
 ")
 
-;;JSON
-(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
-(setq auto-mode-alist (cons '("\\.json$" . js-mode) auto-mode-alist))
-(setq js-indent-level 2)
+;; JSON
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(setq auto-mode-alist (cons '("\\.json$" . js2-mode) auto-mode-alist))
+;; beautify JSON https://coderwall.com/p/66juua
+(defun beautify-json ()
+  "Beautifies any region containing valid JSON data, using Python"
+  (interactive)
+  (when (use-region-p)
+    (let (buf)
+      (shell-command-on-region (mark) (point)
+                               "python -m json.tool"
+                               (current-buffer) t t))))
 
-;;MARKDOWN
+;; MARKDOWN
 (autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
-;;YAML
+;; YAML
 (autoload 'yaml-mode "yaml-mode" "Major mode for editing YAML files" t)
 (setq auto-mode-alist (cons '("\\.yml" . yaml-mode) auto-mode-alist))
 
-;;XML-LITE
-;;(global-set-key "\C-cx" 'xml-lite-mode)
-;;(autoload 'xxml-mode-routine "xml-lite")
-;;(add-hook 'sgml-mode-hook 'xxml-mode-routine)
+;; Go
+;; go-mode via elpa
+(add-to-list 'load-path "~/.emacs.d/elpa/go-mode-20140409.928/" t)
+(require 'go-mode-load)
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/go/bin"))
+(setenv "GOPATH" (concat (getenv "GOPATH") ":~/gopath"))
+(setq exec-path (append exec-path '("/usr/local/go/bin")))
 
-;;WHITESPACE
+;; https://github.com/dougm/goflymake
+;;(add-to-list 'load-path "~/.emacs.d/elpa/flycheck-20140514.1029/" t)
+;;(require 'flycheck)
+;;(add-to-list 'load-path "~/gopath/src/github.com/dougm/goflymake" t)
+;;(require 'go-flymake)
+;; (require 'go-flycheck)
+
+(add-hook 'before-save-hook 'gofmt-before-save)
+
+;; XML-LITE
+;; (global-set-key "\C-cx" 'xml-lite-mode)
+;; (autoload 'xxml-mode-routine "xml-lite")
+;; (add-hook 'sgml-mode-hook 'xxml-mode-routine)
+
+;; WHITESPACE
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
-;;SHELL
-;;Don't echo passwords when communicating with interactive programs:
+;; SHELL
+;; Don't echo passwords when communicating with interactive programs:
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
-;;color output
+;; color output
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-;;clean up shell output by stripping ctrl-m
+;; clean up shell output by stripping ctrl-m
 (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
 
 ;; suppress shell echoes
@@ -235,8 +260,8 @@ binding.pry
           (lambda () (run-at-time 12 nil
                                   (lambda () (delete-windows-on "*Completions*")))))
 
-;;DIRED+
-;;install dired+.el for single dired window and colored directories
+;; DIRED+
+;; install dired+.el for single dired window and colored directories
 (require 'dired+)
 (toggle-diredp-find-file-reuse-dir 1)
 (setq diredp-font-lock-keywords-1
@@ -294,6 +319,7 @@ binding.pry
 ;; install Marmalade repo for gist
 (require 'package)
 (add-to-list 'package-archives
-             '("marmalade" .
-               "http://marmalade-repo.org/packages/"))
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
