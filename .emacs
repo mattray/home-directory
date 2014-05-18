@@ -224,14 +224,6 @@ binding.pry
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/go/bin"))
 (setenv "GOPATH" (concat (getenv "GOPATH") ":~/gopath"))
 (setq exec-path (append exec-path '("/usr/local/go/bin")))
-
-;; https://github.com/dougm/goflymake
-;;(add-to-list 'load-path "~/.emacs.d/elpa/flycheck-20140514.1029/" t)
-;;(require 'flycheck)
-;;(add-to-list 'load-path "~/gopath/src/github.com/dougm/goflymake" t)
-;;(require 'go-flymake)
-;; (require 'go-flycheck)
-
 (add-hook 'before-save-hook 'gofmt-before-save)
 
 ;; XML-LITE
