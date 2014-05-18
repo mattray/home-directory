@@ -1,5 +1,5 @@
 export GOPATH=$HOME/gopath
-export PATH=$HOME/bin:$HOME/bin/packer-0.3.10:/usr/local/go/bin:$GOPATH:$PATH
+export PATH=$HOME/bin:$HOME/bin/packer-0.3.10:/usr/local/go/bin:$GOPATH/bin:$PATH
 
 umask 077
 
