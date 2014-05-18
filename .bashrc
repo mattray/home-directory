@@ -1,4 +1,5 @@
-export PATH=$HOME/bin:$HOME/bin/packer-0.3.10:$PATH
+export GOPATH=$HOME/gopath
+export PATH=$HOME/bin:$HOME/bin/packer-0.3.10:/usr/local/go/bin:$GOPATH:$PATH
 
 umask 077
 
