@@ -1,4 +1,5 @@
 export GOPATH=$HOME/gopath
+#export PATH=$HOME/bin:/opt/chefdk/bin:/opt/chefdk/embedded/bin:$HOME/bin/packer-0.3.10:/usr/local/go/bin:$GOPATH/bin:$PATH
 export PATH=$HOME/bin:$HOME/bin/packer-0.3.10:/usr/local/go/bin:$GOPATH/bin:$PATH
 
 umask 077
