@@ -9,7 +9,7 @@ for project in ~/ws/os/*/; do
     git co master;
     git pull --rebase stackforge master;
     git co -;
-    if [ "$project" != "/Users/mray/ws/os/ceph/" ]
+    if [[ "$project" != "/Users/mray/ws/os/ceph/" && "$project" != "/Users/mray/ws/os/client/" && "$project" != "/Users/mray/ws/os/data-processing/" && "$project" != "/Users/mray/ws/os/database/" ]]
     then
         if [ "$project" != "/Users/mray/ws/os/integration-test/" ]
         then
