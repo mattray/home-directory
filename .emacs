@@ -34,11 +34,7 @@
  '(standard-display-ascii ?\t "^I")
  '(transient-mark-mode t)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
- '(visible-bell f)
- ;; confluence customization
- '(confluence-url "http://wiki.corp.opscode.com/rpc/xmlrpc")
- '(confluence-default-space-alist (list (cons confluence-url "TSE")))
- )
+ '(visible-bell f))
 
 ;; show column markers
 (require 'column-marker)
