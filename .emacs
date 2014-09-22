@@ -11,6 +11,9 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+;; GIT
+(add-to-list 'load-path "~/.emacs.d/elpa/git-gutter-20140913.2354/" t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -33,6 +36,7 @@
  '(standard-display-ascii ?\t "^I")
  '(transient-mark-mode t)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
+ '(global-git-gutter-mode +1)
  '(visible-bell f))
 
 ;; show column markers
@@ -308,7 +312,6 @@ binding.pry
              1 diredp-flag-mark t)
        ))
 
-;; GIT
 ;; install Marmalade repo for gist
 (require 'package)
 (add-to-list 'package-archives
