@@ -36,7 +36,7 @@
  '(standard-display-ascii ?\t "^I")
  '(transient-mark-mode t)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
- '(global-git-gutter-mode +1)
+ '(global-git-gutter-mode t)
  '(visible-bell f))
 
 ;; show column markers
