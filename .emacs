@@ -1,5 +1,5 @@
 ;; EMACS-WIDE SETTINGS
-(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 (add-to-list 'load-path (expand-file-name "/usr/local/share/emacs/site-lisp/"))
 
 ;; starting location
@@ -76,7 +76,7 @@
 
 ;; UI SETTINGS
 ;; color theme
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/color-theme-6.6.0"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/color-theme-6.6.0"))
 (require 'color-theme)
 (require 'color-theme-twilight-mattray)
 (color-theme-twilight-mattray)
