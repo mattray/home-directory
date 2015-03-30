@@ -39,7 +39,7 @@ alias lsr="ls -lAFrtG"
 
 alias gitb="git branch" #list branches
 alias gitco="git co" #checkout
-alias gitd="git diff --patience" #diff
+alias gitd="git diff --patience --no-color" #diff
 alias gitdc="git diff --cached" #diff original
 alias gitdh="git diff HEAD"  #diff head
 alias gitl="git log --oneline --decorate -20" #just the last 20 logs
