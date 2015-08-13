@@ -11,34 +11,6 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-;; GIT
-(add-to-list 'load-path "~/.emacs.d/elpa/git-gutter-20140913.2354/" t)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(auto-compression-mode t nil (jka-compr))
- '(case-fold-search t)
- '(column-number-mode t)
- '(cua-mode nil nil (cua-base))
- '(current-language-environment "ASCII")
- '(custom-browse-sort-alphabetically t)
- '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
- '(frame-title-format "%f" t)
- '(load-home-init-file t t)
- '(markdown-command "/usr/local/bin/markdown")
- '(save-place t nil (saveplace))
- '(scroll-bar-mode nil)
- '(show-paren-mode t nil (paren))
- '(tool-bar-mode nil nil (tool-bar))
- '(standard-display-ascii ?\t "^I")
- '(transient-mark-mode t)
- '(uniquify-buffer-name-style (quote forward) nil (uniquify))
- '(global-git-gutter-mode t)
- '(visible-bell f))
-
 ;; show column markers
 (require 'column-marker)
 (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
@@ -319,3 +291,29 @@ binding.pry
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
+
+;; moved to the bottom to ensure everything loaded
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auto-compression-mode t nil (jka-compr))
+ '(case-fold-search t)
+ '(column-number-mode t)
+ '(cua-mode nil nil (cua-base))
+ '(current-language-environment "ASCII")
+ '(custom-browse-sort-alphabetically t)
+ '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
+ '(frame-title-format "%f" t)
+ '(load-home-init-file t t)
+ '(markdown-command "/usr/local/bin/markdown")
+ '(save-place t nil (saveplace))
+ '(scroll-bar-mode nil)
+ '(show-paren-mode t nil (paren))
+ '(tool-bar-mode nil nil (tool-bar))
+ '(standard-display-ascii ?\t "^I")
+ '(transient-mark-mode t)
+ '(uniquify-buffer-name-style (quote forward) nil (uniquify))
+ '(global-git-gutter-mode t)
+ '(visible-bell f))
