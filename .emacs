@@ -33,8 +33,9 @@
 (setq ns-pop-up-frames nil) ;; keep OSX from opening more windows
 
 ;; FONTS
+;; 0O 1l
 ;; (set-face-font 'default "-*-bitstream vera sans mono-medium-r-*--18-*-*-*-*-*-*-*")
-(set-face-font 'default "-apple-inconsolata-medium-r-normal--20-*-*-*-*-*-*-*")
+(set-face-font 'default "-apple-inconsolata-medium-r-normal--18-*-*-*-*-*-*-*")
 
 (defun jfb-set-mac-font (name  size)
   (interactive
