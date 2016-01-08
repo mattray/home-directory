@@ -105,6 +105,8 @@
 (prefer-coding-system 'utf-8)
 
 ;; RUBY
+;; investigate https://github.com/zenspider/enhanced-ruby-mode
+;; and https://github.com/jtimberman/.emacs.d/blob/master/modules/ruby.el
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
@@ -191,14 +193,15 @@ binding.pry
 (setq auto-mode-alist (cons '("\\.yml" . yaml-mode) auto-mode-alist))
 
 ;; Go
+;; https://github.com/dominikh/go-mode.el
 ;; go-mode via elpa
-(add-to-list 'load-path "~/.emacs.d/elpa/go-mode-20140409.928/" t)
-(require 'go-mode-load)
+(add-to-list 'load-path "~/.emacs.d/elpa/go-mode-20151226.1224/" t)
+(require 'go-mode-autoloads)
 (setenv "GOPATH" (concat (getenv "GOPATH") ":~/gopath"))
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/go/bin:~/gopath/bin"))
 (setq exec-path (append exec-path '("/usr/local/go/bin") '("~/gopath/bin")))
 ;; https://github.com/syohex/emacs-go-eldoc
-(add-to-list 'load-path "~/.emacs.d/elpa/go-eldoc-20140509.150/" t)
+(add-to-list 'load-path "~/.emacs.d/elpa/go-eldoc-20151028.10/" t)
 (require 'go-eldoc)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 ;; go-mode customizations
