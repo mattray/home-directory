@@ -11,6 +11,16 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+;; install Marmalade and MELPA package repos
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "https://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+;; M-x package-list-packages, type U (mark Upgradable packages) and then x (eXecute the installs and deletions). When it’s done installing all the packages it will ask if you want to delete the obsolete packages and so you can hit y (Yes).
+
+
 ;; show column markers
 (require 'column-marker)
 (add-hook 'diff-mode-hook (lambda () (interactive) (column-marker-1 72)))
@@ -104,6 +114,9 @@
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
+;; Flycheck
+(require 'flymake)
+
 ;; RUBY
 ;; investigate https://github.com/zenspider/enhanced-ruby-mode
 ;; and https://github.com/jtimberman/.emacs.d/blob/master/modules/ruby.el
@@ -131,7 +144,9 @@
 ;; display to minibuffer and do overlay
 (setq ruby-block-highlight-toggle t)
 
-(require 'flymake)
+(global-set-key "\M-pd" "require 'pry'
+binding.pry
+")
 ;; Invoke ruby with '-c' to get syntax checking
 (defun flymake-ruby-init ()
   (let* ((temp-file   (flymake-init-create-temp-buffer-copy
@@ -165,10 +180,6 @@
 (eval-after-load 'ruby-mode
   '(progn
      (define-key ruby-mode-map (kbd "#") 'senny-ruby-interpolate)))
-
-(global-set-key "\M-pd" "require 'pry'
-binding.pry
-")
 
 ;; JSON
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
@@ -229,9 +240,9 @@ binding.pry
   (setq comint-process-echoes t))
 (add-hook 'comint-mode-hook 'my-comint-init)
 
-;; make completion buffers disappear after 12 seconds.
+;; make completion buffers disappear after 15 seconds.
 (add-hook 'completion-setup-hook
-          (lambda () (run-at-time 12 nil
+          (lambda () (run-at-time 15 nil
                                   (lambda () (delete-windows-on "*Completions*")))))
 
 ;; DIRED+
@@ -289,13 +300,6 @@ binding.pry
              1 diredp-flag-mark t)
        ))
 
-;; install Marmalade repo for gist
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
 
 ;; moved to the bottom to ensure everything loaded
 (custom-set-variables
