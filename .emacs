@@ -25,7 +25,7 @@
 (require 'column-marker)
 (add-hook 'diff-mode-hook (lambda () (interactive) (column-marker-1 72)))
 (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
-(add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
+(add-hook 'enh-ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-hook 'markdown-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-hook 'diff-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . diff-mode))
@@ -115,25 +115,34 @@
 (prefer-coding-system 'utf-8)
 
 ;; Flycheck
-(require 'flymake)
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; RUBY
-;; investigate https://github.com/zenspider/enhanced-ruby-mode
-;; and https://github.com/jtimberman/.emacs.d/blob/master/modules/ruby.el
+;; https://github.com/zenspider/enhanced-ruby-mode
+;; 'gem install rubocop ruby-lint' for flycheck
+;; ruby-rubocop (syntax and style check using RuboCop)
+;; ruby-rubylint (syntax and style check using ruby-lint)
+(add-to-list 'load-path "~/.emacs.d/elpa/enh-ruby-mode-20151123.141"); must be added after any path containing old ruby-mode
+(autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
+(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+(add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
-(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.erb$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Berksfile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Cheffile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Kitchenfile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Vagrantfile*" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.erb$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Berksfile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Capfile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Cheffile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Kitchenfile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Vagrantfile*" . enh-ruby-mode))
 
+(setq enh-ruby-bounce-deep-indent t)
+(setq enh-ruby-hanging-brace-indent-level 2)
 (setq ruby-deep-indent-paren nil)
+
 ;; ruby-block
 (require 'ruby-block)
 (ruby-block-mode t)
@@ -147,26 +156,8 @@
 (global-set-key "\M-pd" "require 'pry'
 binding.pry
 ")
-;; Invoke ruby with '-c' to get syntax checking
-(defun flymake-ruby-init ()
-  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-         (local-file  (file-relative-name
-                       temp-file
-                       (file-name-directory buffer-file-name))))
-    (list "ruby" (list "-c" local-file))))
-(push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("Berksfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("Cheffile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("Cheffile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("Kitchenfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("Procfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("Thorfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("Vagrantfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(add-hook 'ruby-mode-hook
-          (lambda () (flymake-mode t)))
-(add-hook 'ruby-mode-hook
+
+(add-hook 'ruby-enh-mode-hook
           (lambda () (linum-mode t)))
 (defun senny-ruby-interpolate ()
   "In a double quoted string, interpolate."
@@ -177,7 +168,7 @@ binding.pry
          (looking-at ".*\""))
     (insert "{}")
     (backward-char 1)))
-(eval-after-load 'ruby-mode
+(eval-after-load 'enh-ruby-mode
   '(progn
      (define-key ruby-mode-map (kbd "#") 'senny-ruby-interpolate)))
 
