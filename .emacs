@@ -20,7 +20,6 @@
 (package-initialize)
 ;; M-x package-list-packages, type U (mark Upgradable packages) and then x (eXecute the installs and deletions). When it’s done installing all the packages it will ask if you want to delete the obsolete packages and so you can hit y (Yes).
 
-
 ;; show column markers
 (require 'column-marker)
 (add-hook 'diff-mode-hook (lambda () (interactive) (column-marker-1 72)))
@@ -117,6 +116,23 @@
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
+;; Git
+(require 'git-gutter-fringe)
+;;(require 'git-gutter)
+(setq git-gutter-fr:side 'right-fringe)
+;;(global-git-gutter-mode +1)
+(global-git-gutter-mode t)
+;; (add-hook 'after-init-hook #'global-git-gutter-mode)
+;; (setq git-gutter:window-width 2)
+;; (setq git-gutter:unchanged-sign "  ")
+;; (setq git-gutter:added-sign "++")
+;; (setq git-gutter:deleted-sign "--")
+;; (setq git-gutter:modified-sign "**")
+;; (set-face-foreground 'git-gutter-fr:modified "yellow")
+;; (set-face-foreground 'git-gutter-fr:added    "blue")
+;; (set-face-foreground 'git-gutter-fr:deleted  "white")
+;;(global-git-gutter-mode +1)
+
 ;; RUBY
 ;; https://github.com/zenspider/enhanced-ruby-mode
 ;; 'gem install rubocop ruby-lint' for flycheck
@@ -157,8 +173,8 @@
 binding.pry
 ")
 
-(add-hook 'ruby-enh-mode-hook
-          (lambda () (linum-mode t)))
+;; (add-hook 'ruby-enh-mode-hook
+;;           (lambda () (linum-mode t)))
 (defun senny-ruby-interpolate ()
   "In a double quoted string, interpolate."
   (interactive)
@@ -310,7 +326,6 @@ binding.pry
  '(flycheck-ruby-rubocop-executable "/usr/local/bin/rubocop")
  '(flycheck-ruby-rubylint-executable "/usr/local/bin/ruby-lint")
  '(frame-title-format "%f" t)
- '(global-git-gutter-mode t)
  '(load-home-init-file t t)
  '(markdown-command "/usr/local/bin/markdown")
  '(save-place t nil (saveplace))
@@ -320,10 +335,5 @@ binding.pry
  '(tool-bar-mode nil nil (tool-bar))
  '(transient-mark-mode t)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
- '(visible-bell f))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+ '(visible-bell f)
  )
