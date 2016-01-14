@@ -172,6 +172,7 @@ binding.pry
   '(progn
      (define-key ruby-mode-map (kbd "#") 'senny-ruby-interpolate)))
 
+
 ;; JSON
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (setq auto-mode-alist (cons '("\\.json$" . js2-mode) auto-mode-alist))
@@ -305,15 +306,24 @@ binding.pry
  '(current-language-environment "ASCII")
  '(custom-browse-sort-alphabetically t)
  '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
+ '(flycheck-chef-foodcritic-executable "/usr/local/bin/foodcritic")
+ '(flycheck-ruby-rubocop-executable "/usr/local/bin/rubocop")
+ '(flycheck-ruby-rubylint-executable "/usr/local/bin/ruby-lint")
  '(frame-title-format "%f" t)
+ '(global-git-gutter-mode t)
  '(load-home-init-file t t)
  '(markdown-command "/usr/local/bin/markdown")
  '(save-place t nil (saveplace))
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
+ '(standard-display-ascii 9 t)
  '(tool-bar-mode nil nil (tool-bar))
- '(standard-display-ascii ?\t "^I")
  '(transient-mark-mode t)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
- '(global-git-gutter-mode t)
  '(visible-bell f))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
