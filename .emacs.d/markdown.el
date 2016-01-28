@@ -3,6 +3,8 @@
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
+(require 'markdown-preview-eww)
+
 ;; custom variables
 (custom-set-variables
  '(markdown-command "/usr/local/bin/markdown")
