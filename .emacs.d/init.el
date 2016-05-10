@@ -9,5 +9,6 @@
 (load-file "~/.emacs.d/ruby.el")
 (load-file "~/.emacs.d/shell.el")
 ;; (load-file "~/.emacs.d/xml.el")
+(load-file "~/.emacs.d/toml.el")
 (load-file "~/.emacs.d/yaml.el")
 (load-file "~/.emacs.d/editor.el")
