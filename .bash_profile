@@ -10,3 +10,6 @@ source '/Users/mray/google-cloud-sdk/path.bash.inc'
 
 # The next line enables shell command completion for gcloud.
 source '/Users/mray/google-cloud-sdk/completion.bash.inc'
+
+# docker docker docker
+eval "$(docker-machine env default)"
