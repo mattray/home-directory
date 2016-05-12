@@ -15,3 +15,5 @@
 (custom-set-variables
  '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
  )
+
+(add-hook 'sh-mode-hook (setq sh-basic-offset 2 sh-indentation 2))

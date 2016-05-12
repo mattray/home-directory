@@ -15,10 +15,10 @@
 ;; show column markers
 (require 'column-marker)
 (add-hook 'diff-mode-hook (lambda () (interactive) (column-marker-1 72)))
-(add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-hook 'enh-ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-hook 'markdown-mode-hook (lambda () (interactive) (column-marker-1 80)))
-(add-hook 'diff-mode-hook (lambda () (interactive) (column-marker-1 80)))
+(add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
+(add-hook 'sh-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . diff-mode))
 
 ;; KEY BINDINGS
