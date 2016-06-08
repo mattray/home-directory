@@ -13,3 +13,8 @@ source '/Users/mray/google-cloud-sdk/completion.bash.inc'
 
 # docker docker docker
 eval "$(docker-machine env default)"
+
+# path to the DCOS CLI binary
+if [[ "$PATH" != *"/Users/mray/dcos/bin"* ]];
+  then export PATH=$PATH:/Users/mray/dcos/bin;
+fi
