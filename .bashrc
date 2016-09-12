@@ -1,6 +1,5 @@
 export GOPATH=/Users/mray/go
-#export PATH=$HOME/bin:/opt/chefdk/bin:/opt/chefdk/embedded/bin:$HOME/bin/packer-0.3.10:/usr/local/go/bin:$GOPATH/bin:$PATH
-export PATH=$HOME/bin:$HOME/bin/packer-0.3.10:/usr/local/go/bin:$GOPATH/bin:$PATH
+export PATH=$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$PATH:$HOME/.chefdk/gem/ruby/2.1.0/bin
 
 umask 077
 
