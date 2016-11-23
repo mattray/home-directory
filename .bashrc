@@ -1,5 +1,5 @@
 export GOPATH=/Users/mray/go
-export PATH=$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$PATH:$HOME/.chefdk/gem/ruby/2.3.0/bin
+export PATH=$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$PATH
 
 umask 077
 

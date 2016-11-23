@@ -1,6 +1,9 @@
 #This file is sourced by bash when you log in interactively.
 [ -f ~/.bashrc ] && . ~/.bashrc
 
+# my ChefStyle is immensely strong
+eval "$(/opt/chefdk/bin/chef shell-init bash)"
+
 chruby ruby-2.3
 
 . ~/.creds
