@@ -1,5 +1,6 @@
-export GOPATH=/Users/mray/go
-export PATH=$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$PATH
+export GOPATH=$HOME/go
+export RUSTPATH=$HOME/.cargo
+export PATH=$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$RUSTPATH/bin:$PATH
 
 umask 077
 
