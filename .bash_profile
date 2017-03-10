@@ -2,7 +2,7 @@
 [ -f ~/.bashrc ] && . ~/.bashrc
 
 # my ChefStyle is immensely strong
-eval "$(/opt/chefdk/bin/chef shell-init bash)"
+# eval "$(/opt/chefdk/bin/chef shell-init bash)"
 
 chruby ruby-2.3
 
@@ -14,10 +14,13 @@ source '/Users/mray/google-cloud-sdk/path.bash.inc'
 # The next line enables shell command completion for gcloud.
 source '/Users/mray/google-cloud-sdk/completion.bash.inc'
 
+# Azure shell command completion
+source '/Users/mray/lib/azure-cli/az.completion'
+
 # docker docker docker
 eval "$(docker-machine env default)"
 
 # path to the DCOS CLI binary
-if [[ "$PATH" != *"/Users/mray/dcos/bin"* ]];
-  then export PATH=$PATH:/Users/mray/dcos/bin;
-fi
+# if [[ "$PATH" != *"/Users/mray/dcos/bin"* ]];
+#   then export PATH=$PATH:/Users/mray/dcos/bin;
+# fi
