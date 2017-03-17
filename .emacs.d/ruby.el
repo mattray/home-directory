@@ -55,7 +55,7 @@ binding.pry
 
 ;; custom variables
 (custom-set-variables
- '(flycheck-chef-foodcritic-executable "/usr/local/bin/foodcritic")
- '(flycheck-ruby-rubocop-executable "/usr/local/bin/rubocop")
+ '(flycheck-chef-foodcritic-executable "/opt/chefdk/bin/foodcritic")
+ '(flycheck-ruby-rubocop-executable "/opt/chefdk/bin/rubocop")
  '(flycheck-ruby-rubylint-executable "/usr/local/bin/ruby-lint")
  )
