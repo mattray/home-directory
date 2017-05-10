@@ -1,6 +1,6 @@
 export GOPATH=$HOME/go
 export RUSTPATH=$HOME/.cargo
-export PATH=$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$RUSTPATH/bin:$PATH
+export PATH=/opt/chefdk/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$RUSTPATH/bin:$PATH
 
 umask 077
 
@@ -128,4 +128,6 @@ gemset () {
 
 alias gemset_list="ls -1 ~/.chgems/"
 
-export PS1="\[\e[36m\]\u@\h\[\e[37m\][\A]\[\e[31m\]\$(ruby_version_gemset)\[\e[32m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[34m\]\w\n\[\e[37m\]\$\[\e[0m\] "
+# export PS1="\[\e[36m\]\u@\h\[\e[37m\][\A]\[\e[31m\]\$(ruby_version_gemset)\[\e[32m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[34m\]\w\n\[\e[37m\]\$\[\e[0m\] "
+
+export PS1="\[\e[36m\]\u@\h\[\e[37m\][\A]\[\e[32m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[34m\]\w\n\[\e[37m\]\$\[\e[0m\] "

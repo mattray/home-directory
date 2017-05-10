@@ -2,17 +2,17 @@
 [ -f ~/.bashrc ] && . ~/.bashrc
 
 # my ChefStyle is immensely strong
-# eval "$(/opt/chefdk/bin/chef shell-init bash)"
+eval "$(/opt/chefdk/bin/chef shell-init bash)"
 
-chruby ruby-2.3
+# chruby ruby-2.3
 
 . ~/.creds
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/mray/google-cloud-sdk/path.bash.inc'
+# source '/Users/mray/google-cloud-sdk/path.bash.inc'
 
-# The next line enables shell command completion for gcloud.
-source '/Users/mray/google-cloud-sdk/completion.bash.inc'
+# # The next line enables shell command completion for gcloud.
+# source '/Users/mray/google-cloud-sdk/completion.bash.inc'
 
 # Azure shell command completion
 source '/Users/mray/lib/azure-cli/az.completion'
