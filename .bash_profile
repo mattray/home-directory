@@ -4,7 +4,7 @@
 # my ChefStyle is immensely strong
 eval "$(/opt/chefdk/bin/chef shell-init bash)"
 
-chruby ruby-2.3
+chruby ruby-2.4
 
 . ~/.creds
 
