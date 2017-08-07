@@ -32,10 +32,10 @@ alias rm='rm -i'
 
 alias cl='clear'
 
-alias ls="ls -AFG"
-alias ls1='ls -AFG1'
-alias lsa="ls -lAFG"
-alias lsr="ls -lAFrtG"
+alias ls="exa -aF"
+alias ls1="exa -1aF"
+alias lsa="exa -aFl"
+alias lsr="exa -aFlr -s modified"
 
 alias gitb="git branch" #list branches
 alias gitco="git co" #checkout
