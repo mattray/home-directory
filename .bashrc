@@ -10,6 +10,8 @@ export HISTCONTROL=ignoredups
 export HISTFILESIZE=200000
 export HISTSIZE=200000
 
+export AWS_SSH_KEY_ID=mattray-apac
+
 # emacs M-x shell
 if [ "dumb" == "$TERM" ] ; then
     alias m='cat'
