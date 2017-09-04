@@ -37,7 +37,7 @@ alias cl='clear'
 alias ls="exa -aF --color=always"
 alias ls1="exa -1aF --color=always"
 alias lsa="exa -aFl --color=always"
-alias lsr="exa -aFlr -s modified --color=always"
+alias lsr="exa -aFl -s modified --color=always"
 
 alias gitb="git branch" #list branches
 alias gitco="git co" #checkout
