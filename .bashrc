@@ -130,7 +130,7 @@ gemset () {
 
 alias gemset_list="ls -1 ~/.chgems/"
 
-export PS1="\[\e[36m\]\u@\h\[\e[37m\][\A]\[\e[31m\]\$(ruby_version_gemset)\[\e[32m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[34m\]\w\n\[\e[37m\]\$\[\e[0m\] "
+export PS1="\[\e[36m\]\u@\h\[\e[37m\][\A]\[\e[35m\]\$(ruby_version_gemset)\[\e[32m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[34m\]\w\n\[\e[37m\]\$\[\e[0m\] "
 
 # Disable Ruby version
 #export PS1="\[\e[36m\]\u@\h\[\e[37m\][\A]\[\e[32m\]\$(clean_git_prompt)\[\e[33m\]\$(dirty_git_prompt)\[\e[34m\]\w\n\[\e[37m\]\$\[\e[0m\] "
