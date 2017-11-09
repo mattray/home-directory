@@ -12,6 +12,8 @@ export HISTSIZE=200000
 
 export AWS_SSH_KEY_ID=mattray-apac
 
+export HAB_ORIGIN=mattray
+
 # emacs M-x shell
 if [ "dumb" == "$TERM" ] ; then
     alias m='cat'
