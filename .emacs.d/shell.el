@@ -11,11 +11,4 @@
 ;;   (setq comint-process-echoes t))
 ;; (add-hook 'comint-mode-hook 'my-comint-init)
 
-;; custom variables
-(custom-set-variables
- '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
- '(ansi-color-names-vector
-   ["black" "olive drab" "green1" "yellow3" "blue2" "magenta3" "cyan3" "gray90"])
- )
-
 (add-hook 'sh-mode-hook (setq sh-basic-offset 2 sh-indentation 2))

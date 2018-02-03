@@ -52,10 +52,3 @@ binding.pry
 (eval-after-load 'enh-ruby-mode
   '(progn
      (define-key ruby-mode-map (kbd "#") 'senny-ruby-interpolate)))
-
-;; custom variables
-(custom-set-variables
- '(flycheck-chef-foodcritic-executable "/opt/chefdk/bin/foodcritic")
- '(flycheck-ruby-rubocop-executable "/opt/chefdk/bin/rubocop")
- '(flycheck-ruby-rubylint-executable "/usr/local/bin/ruby-lint")
- )

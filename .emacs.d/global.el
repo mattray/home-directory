@@ -47,20 +47,3 @@
 
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
-
-;; custom variables
-(custom-set-variables
- '(auto-compression-mode t nil (jka-compr))
- '(case-fold-search t)
- '(cua-mode nil nil (cua-base))
- '(current-language-environment "ASCII")
- '(custom-browse-sort-alphabetically t)
- '(frame-title-format "%f" t)
- '(load-home-init-file t t)
- '(save-place t nil (saveplace))
- '(scroll-bar-mode nil)
- '(standard-display-ascii 9 t)
- '(tool-bar-mode nil nil (tool-bar))
- '(uniquify-buffer-name-style (quote forward) nil (uniquify))
- '(visible-bell f)
- )
