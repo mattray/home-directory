@@ -10,15 +10,6 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-;; install Marmalade and MELPA package repos
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "https://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
-(package-initialize)
-;; M-x package-list-packages, type U (mark Upgradable packages) and then x (eXecute the installs and deletions). When it’s done installing all the packages it will ask if you want to delete the obsolete packages and so you can hit y (Yes).
-
 ;; UI SETTINGS
 (require 'color-theme-twilight-mattray)
 (color-theme-twilight-mattray)

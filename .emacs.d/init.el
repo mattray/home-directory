@@ -1,11 +1,13 @@
-;; emacs configuration
+;;; emacs configuration
 
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;; install Marmalade and MELPA package repos
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "https://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
+;; M-x package-list-packages, type U (mark Upgradable packages) and then x (eXecute the installs and deletions). When it’s done installing all the packages it will ask if you want to delete the obsolete packages and so you can hit y (Yes).
 
 (load-file "~/.emacs.d/global.el")
 (load-file "~/.emacs.d/flyspell.el")
@@ -41,6 +43,9 @@
  '(frame-title-format "%f" t)
  '(load-home-init-file t t)
  '(markdown-command "/usr/local/bin/markdown")
+ '(package-selected-packages
+   (quote
+    (yaml-mode toml-mode smart-mode-line rust-mode ruby-block rubocop markdown-preview-eww markdown-mode js2-refactor go-eldoc git-gutter-fringe git-commit gist flycheck f enh-ruby-mode dired+ column-marker color-theme)))
  '(save-place t nil (saveplace))
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
