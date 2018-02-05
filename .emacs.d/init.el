@@ -8,6 +8,7 @@
 (package-initialize)
 
 (load-file "~/.emacs.d/global.el")
+(load-file "~/.emacs.d/flyspell.el")
 (load-file "~/.emacs.d/osx.el")
 (load-file "~/.emacs.d/git.el")
 (load-file "~/.emacs.d/go.el")
@@ -16,7 +17,7 @@
 (load-file "~/.emacs.d/ruby.el")
 (load-file "~/.emacs.d/shell.el")
 ;; (load-file "~/.emacs.d/xml.el")
-(load-file "~/.emacs.d/rust.el")
+;; (load-file "~/.emacs.d/rust.el")
 (load-file "~/.emacs.d/toml.el")
 (load-file "~/.emacs.d/yaml.el")
 (load-file "~/.emacs.d/editor.el")
