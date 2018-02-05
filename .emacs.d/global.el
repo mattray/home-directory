@@ -1,5 +1,5 @@
 ;; EMACS-WIDE SETTINGS
-;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/"))
 
 ;; starting location
 (setq default-directory (concat (getenv "HOME") "/"))
@@ -20,7 +20,6 @@
 ;; M-x package-list-packages, type U (mark Upgradable packages) and then x (eXecute the installs and deletions). When it’s done installing all the packages it will ask if you want to delete the obsolete packages and so you can hit y (Yes).
 
 ;; UI SETTINGS
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/"))
 (require 'color-theme-twilight-mattray)
 (color-theme-twilight-mattray)
 ;; turn off menu bar
@@ -44,6 +43,9 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
+
+;; default to text-mode
+(setq-default major-mode 'text-mode)
 
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
