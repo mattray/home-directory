@@ -3,7 +3,6 @@
 ;; 'gem install rubocop ruby-lint' for flycheck
 ;; ruby-rubocop (syntax and style check using RuboCop)
 ;; ruby-rubylint (syntax and style check using ruby-lint)
-(add-to-list 'load-path "~/.emacs.d/elpa/enh-ruby-mode-20151123.141"); must be added after any path containing old ruby-mode
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
