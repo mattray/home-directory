@@ -8,3 +8,4 @@
 (add-hook 'markdown-mode-hook 'flyspell-mode)
 (add-hook 'text-mode-hook 'flyspell-buffer)
 (add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
