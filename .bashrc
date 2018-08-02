@@ -1,6 +1,6 @@
 export GOPATH=$HOME/go
 export RUSTPATH=$HOME/.cargo
-export PATH=/opt/chefdk/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$RUSTPATH/bin:$PATH
+export PATH=/opt/chefdk/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:/usr/local/bin:$PATH
 
 umask 077
 
@@ -65,13 +65,13 @@ alias grep="grep --color=auto"
 alias reveal="open -R"
 
 #notification message
-alias ndone='/Applications/Utilities/terminal-notifier.app/Contents/MacOS/terminal-notifier -title DONE -message `date "+$?:%H:%M:%S"` >> /dev/null'
+alias ndone='terminal-notifier -title DONE -message `date "+$?:%H:%M:%S"` >> /dev/null'
 
 pman () {
     man -t "${1}" | open -f -a /Applications/Preview.app
 }
 
-source /usr/local/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/chruby.sh
 
 function git_branch {
     git branch --no-color 2> /dev/null | egrep '^\*' | sed -e 's/^* //'
