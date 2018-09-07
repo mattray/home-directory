@@ -21,6 +21,9 @@
 (add-hook 'sh-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . diff-mode))
 
+;; show line numbers
+(add-hook 'prog-mode-hook 'linum-mode)
+
 ;; KEY BINDINGS
 ;; skip to line number
 (global-set-key "\C-Xg" 'goto-line)
