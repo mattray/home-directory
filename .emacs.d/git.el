@@ -1,9 +1,9 @@
 ;; Git
 ;;(require 'git-gutter-fringe)
-(require 'git-gutter)
+(require 'git-gutter-fringe+)
 ;;(setq git-gutter-fr:side 'right-fringe)
 ;;(global-git-gutter-mode +1)
-(global-git-gutter-mode t)
+(global-git-gutter+-mode t)
 ;; (add-hook 'after-init-hook #'global-git-gutter-mode)
 ;; (setq git-gutter:window-width 2)
 ;; (setq git-gutter:unchanged-sign "  ")

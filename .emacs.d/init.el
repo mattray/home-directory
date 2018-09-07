@@ -37,7 +37,6 @@
  '(current-language-environment "ASCII")
  '(custom-browse-sort-alphabetically t)
  '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
- '(flycheck-chef-foodcritic-executable "/opt/chefdk/bin/foodcritic")
  '(flycheck-ruby-rubocop-executable "/opt/chefdk/bin/rubocop")
  '(flycheck-ruby-rubylint-executable "/usr/local/bin/ruby-lint")
  '(frame-title-format "%f" t)
@@ -45,7 +44,7 @@
  '(markdown-command "/usr/local/bin/markdown")
  '(package-selected-packages
    (quote
-    (yaml-mode toml-mode smart-mode-line rust-mode ruby-block rubocop markdown-preview-eww markdown-mode js2-refactor go-eldoc git-gutter-fringe git-commit gist flycheck f enh-ruby-mode dired+ column-marker color-theme)))
+    (git-gutter-fringe+ yaml-mode toml-mode smart-mode-line rust-mode ruby-block rubocop markdown-preview-eww markdown-mode js2-refactor go-eldoc git-commit gist flycheck f enh-ruby-mode dired+ column-marker color-theme)))
  '(save-place t nil (saveplace))
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
