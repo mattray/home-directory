@@ -1,6 +1,6 @@
 export GOPATH=$HOME/go
 export RUSTPATH=$HOME/.cargo
-export PATH=/opt/chefdk/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:/usr/local/bin:$PATH
+export PATH+=$HOME/bin:/usr/local/go/bin:$GOPATH/bin:/usr/local/bin:/opt/chefdk/embedded/bin
 
 umask 077
 
@@ -34,6 +34,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
+alias cat='bat'
 alias cl='clear'
 
 alias ls="exa -aF --color=always"
