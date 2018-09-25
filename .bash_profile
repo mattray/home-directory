@@ -2,7 +2,8 @@
 [ -f ~/.bashrc ] && . ~/.bashrc
 
 # my ChefStyle is immensely strong
-eval "$(/opt/chefdk/bin/chef shell-init bash)"
+# export PATH+=/opt/chefdk/embedded/bin
+# eval "$(/opt/chefdk/bin/chef shell-init bash)"
 
 chruby ruby-2.5
 

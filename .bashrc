@@ -1,6 +1,6 @@
 export GOPATH=$HOME/go
 export RUSTPATH=$HOME/.cargo
-export PATH+=$HOME/bin:/usr/local/go/bin:$GOPATH/bin:/usr/local/bin:/opt/chefdk/embedded/bin
+export PATH+=$HOME/bin:/usr/local/go/bin:$GOPATH/bin:/usr/local/bin:/sbin
 
 umask 077
 
@@ -27,7 +27,7 @@ else
 fi
 
 export EDITOR=emacsclient
-alias emacs='emacsclient -n'
+export GIT_EDITOR=$EDITOR
 
 # Some more alias to avoid making mistakes:
 alias cp='cp -i'
@@ -54,8 +54,6 @@ alias gits="git status -s" #short status
 alias gits?="git status -s | grep -v \?\?" #ignore unknowns
 alias gitst="git status" #long status
 alias gitus="git unstage" #unstage a change alias was set with 'git config --global alias.unstage "reset HEAD"'
-
-export GIT_EDITOR="`which emacsclient` $EMACS_SERVER_FILE"
 
 alias gem_push="echo double check your permissions"
 alias rspec="rspec --format documentation"

@@ -25,8 +25,10 @@
 (add-hook 'prog-mode-hook 'linum-mode)
 
 ;; KEY BINDINGS
+;; let's try hippie-expand
+(global-set-key [remap dabbrev-expand] 'hippie-expand)
 ;; skip to line number
-(global-set-key "\C-Xg" 'goto-line)
+(global-set-key "\C-cg" 'goto-line)
 ;; toggle comment out block
 (global-set-key "\C-cc" 'comment-region)
 (global-set-key "\C-cu" 'uncomment-region)

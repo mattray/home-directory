@@ -12,7 +12,6 @@
 (load-file "~/.emacs.d/global.el")
 (load-file "~/.emacs.d/flyspell.el")
 (load-file "~/.emacs.d/osx.el")
-(load-file "~/.emacs.d/git.el")
 (load-file "~/.emacs.d/go.el")
 ;; (load-file "~/.emacs.d/json.el")
 (load-file "~/.emacs.d/markdown.el")
@@ -41,11 +40,12 @@
  '(flycheck-ruby-rubylint-executable "/usr/local/bin/ruby-lint")
  '(frame-title-format "%f" t)
  '(load-home-init-file t t)
+ '(magit-git-executable "/usr/local/bin/git")
  '(markdown-command "/usr/local/bin/markdown")
  '(package-selected-packages
    (quote
-    (git-gutter-fringe+ yaml-mode toml-mode smart-mode-line rust-mode ruby-block rubocop markdown-preview-eww markdown-mode js2-refactor go-eldoc git-commit gist flycheck f enh-ruby-mode dired+ column-marker color-theme)))
- '(save-place t nil (saveplace))
+    (gist yaml-mode toml-mode smart-mode-line rust-mode ruby-block rubocop markdown-preview-eww markdown-mode magit js2-refactor go-eldoc flycheck f enh-ruby-mode dired+ column-marker color-theme)))
+ '(save-place-mode t nil (saveplace))
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
  '(standard-display-ascii 9 t)
