@@ -20,13 +20,19 @@
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . diff-mode))
 
 ;; show line numbers
-(add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+;; show git status
+(add-hook 'prog-mode-hook 'diff-hl-mode)
+(add-hook 'after-save-hook 'magit-after-save-refresh-status t)
 
 ;; KEY BINDINGS
 ;; let's try hippie-expand
 (global-set-key [remap dabbrev-expand] 'hippie-expand)
 ;; skip to line number
 (global-set-key "\C-cg" 'goto-line)
+;; magit status
+(global-set-key "\C-xg" 'magit-status)
 ;; toggle comment out block
 (global-set-key "\C-cc" 'comment-region)
 (global-set-key "\C-cu" 'uncomment-region)
