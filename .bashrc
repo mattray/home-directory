@@ -1,14 +1,15 @@
 export GOPATH=$HOME/go
 export RUSTPATH=$HOME/.cargo
-export PATH+=$HOME/bin:/usr/local/go/bin:$GOPATH/bin:/usr/local/bin:/sbin
+export PATH+=:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:/usr/local/bin:/sbin
 
 umask 077
 
 # Ignore commands starting with a space, duplicates, and a few others.
 export HISTIGNORE="[ ]*:&:bg:fg:ls -l:ls -al:ls -la:ls1:lsa:lsr:gits:gits?"
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth
 export HISTFILESIZE=200000
 export HISTSIZE=200000
+shopt -s histappend
 
 export AWS_SSH_KEY_ID=mattray-apac
 
