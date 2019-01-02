@@ -44,7 +44,7 @@
  '(markdown-command "/usr/local/bin/markdown")
  '(package-selected-packages
    (quote
-    (diff-hl gist yaml-mode toml-mode smart-mode-line rust-mode ruby-block rubocop markdown-preview-eww markdown-mode magit js2-refactor go-eldoc flycheck f enh-ruby-mode dired+ column-marker color-theme)))
+    (json-mode diff-hl gist yaml-mode toml-mode smart-mode-line rust-mode ruby-block rubocop markdown-preview-eww markdown-mode magit js2-refactor go-eldoc flycheck f enh-ruby-mode dired+ column-marker color-theme)))
  '(save-place-mode t nil (saveplace))
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
@@ -58,3 +58,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; if you want a Tramp shell on a remote box, open a file there first
+;; C-x C-f /ssh:vagrant@127.0.0.1#2222:/tmp/file
+;; C-u M-x shell /ssh:vagrant@127.0.0.1#2222:/
