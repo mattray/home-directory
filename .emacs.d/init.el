@@ -11,7 +11,7 @@
 
 (load-file "~/.emacs.d/global.el")
 (load-file "~/.emacs.d/flyspell.el")
-(load-file "~/.emacs.d/osx.el")
+(load-file "~/.emacs.d/macos.el")
 (load-file "~/.emacs.d/go.el")
 ;; (load-file "~/.emacs.d/json.el")
 (load-file "~/.emacs.d/markdown.el")

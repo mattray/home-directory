@@ -25,3 +25,6 @@
                       :weight 'normal
                       :width  'normal
                       :height (* 10 size)))
+
+(add-to-list 'default-frame-alist
+             '(ns-appearance . dark))
