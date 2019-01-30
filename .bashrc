@@ -1,6 +1,6 @@
 export GOPATH=$HOME/go
 export RUSTPATH=$HOME/.cargo
-export PATH+=:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:/usr/local/bin:/sbin
+export PATH+=:$HOME/bin:/usr/local/go/bin:$GOPATH/bin
 
 umask 077
 
