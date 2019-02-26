@@ -5,7 +5,7 @@
 # export PATH+=/opt/chefdk/embedded/bin
 # eval "$(/opt/chefdk/bin/chef shell-init bash)"
 
-chruby ruby-2.5
+chruby ruby-2.6
 
 . ~/.creds
 
