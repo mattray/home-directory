@@ -35,7 +35,6 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-alias cat='bat'
 alias cl='clear'
 
 alias ls="exa -aF --color=always"
