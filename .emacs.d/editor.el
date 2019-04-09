@@ -30,7 +30,7 @@
 ;; let's try hippie-expand
 (global-set-key [remap dabbrev-expand] 'hippie-expand)
 ;; skip to line number
-(global-set-key "\C-cg" 'goto-line)
+(global-set-key "\C-xl" 'goto-line)
 ;; magit status
 (global-set-key "\C-xg" 'magit-status)
 ;; toggle comment out block
