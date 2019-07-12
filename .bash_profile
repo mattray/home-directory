@@ -22,3 +22,10 @@ chruby ruby-2.6
 # if [[ "$PATH" != *"/Users/mray/dcos/bin"* ]];
 #   then export PATH=$PATH:/Users/mray/dcos/bin;
 # fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/mattray/ws/google-cloud-sdk/path.bash.inc' ]; then . '/Users/mattray/ws/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/mattray/ws/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/mattray/ws/google-cloud-sdk/completion.bash.inc'; fi
+export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
