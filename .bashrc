@@ -6,12 +6,10 @@ umask 077
 
 # Ignore commands starting with a space, duplicates, and a few others.
 export HISTIGNORE="[ ]*:&:bg:fg:ls -l:ls -al:ls -la:ls1:lsa:lsr:gits:gits?"
-export HISTCONTROL=ignoreboth
+export HISTCONTROL=ignoreboth:erasedups
 export HISTFILESIZE=200000
 export HISTSIZE=200000
 shopt -s histappend
-
-export AWS_SSH_KEY_ID=mattray-apac
 
 export HAB_ORIGIN=mattray
 
