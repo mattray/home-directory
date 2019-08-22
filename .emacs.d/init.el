@@ -12,7 +12,6 @@
 (load-file "~/.emacs.d/global.el")
 (load-file "~/.emacs.d/flyspell.el")
 (load-file "~/.emacs.d/macos.el")
-(load-file "~/.emacs.d/go.el")
 ;; (load-file "~/.emacs.d/json.el")
 (load-file "~/.emacs.d/markdown.el")
 (load-file "~/.emacs.d/ruby.el")
@@ -22,6 +21,7 @@
 (load-file "~/.emacs.d/toml.el")
 (load-file "~/.emacs.d/yaml.el")
 (load-file "~/.emacs.d/editor.el")
+(load-file "~/.emacs.d/dired.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -62,3 +62,5 @@
 ;; if you want a Tramp shell on a remote box, open a file there first
 ;; C-x C-f /ssh:vagrant@127.0.0.1#2222:/tmp/file
 ;; C-u M-x shell /ssh:vagrant@127.0.0.1#2222:/
+;; sudo a file
+;; C-x C-f /ssh:cubert|sudo:cubert:/etc/apt/sources.list
