@@ -11,8 +11,7 @@
       `((".*" ,temporary-file-directory t)))
 
 ;; UI SETTINGS
-(require 'color-theme-twilight-mattray)
-(color-theme-twilight-mattray)
+(require 'mattray-twilight-theme)
 ;; turn off menu bar
 (menu-bar-mode (if window-system 1 -1))
 ;; 'y' instead of 'yes'
