@@ -68,7 +68,11 @@
  '(ruby-regexp-delimiter-face ((t (:foreground "orange"))))
  '(ruby-heredoc-delimiter-face ((t (:foreground "#9B859D"))))
  '(ruby-op-face ((t (:foreground "#CDA869"))))
- '(linum ((t (:background "#141314" :foreground "#2D2B2E"))))
+
+ ;; line-number-mode
+ '(line-number ((t (:foreground "#000409" :background "#001122"))))
+ '(line-number-current-line ((t (:foreground "BlanchedAlmond" :background "#003355"))))
+
  '(hl-line ((t (:background "#1111FF"))))
  '(yas/field-highlight-face ((t (:background "#27292A"))))
 
