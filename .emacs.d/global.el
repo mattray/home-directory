@@ -12,6 +12,14 @@
 
 ;; UI SETTINGS
 (require 'mattray-twilight-theme)
+;; powerline
+(require 'powerline-mattray-theme)
+(setq powerline-default-separator 'bar) ;;alternate bar
+(powerline-mattray-theme)
+;; time mode
+(setq display-time-24hr-format t)
+(setq display-time-default-load-average nil)
+(display-time)
 ;; turn off menu bar
 (menu-bar-mode (if window-system 1 -1))
 ;; 'y' instead of 'yes'
