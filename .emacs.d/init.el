@@ -35,6 +35,9 @@
  '(column-number-mode t)
  '(current-language-environment "ASCII")
  '(custom-browse-sort-alphabetically t)
+ '(custom-safe-themes
+   (quote
+    ("3b1a0c5b02862eec5f1b3f3f4145fd5a8b02d65beb13d8fa8a6262e280f87119" default)))
  '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
  '(flycheck-ruby-rubocop-executable "/opt/chefdk/bin/rubocop")
  '(flycheck-ruby-rubylint-executable "/usr/local/bin/ruby-lint")
@@ -44,7 +47,7 @@
  '(markdown-command "/usr/local/bin/markdown")
  '(package-selected-packages
    (quote
-    (powerline json-mode diff-hl gist yaml-mode toml-mode smart-mode-line rust-mode ruby-block rubocop markdown-preview-eww markdown-mode magit js2-refactor go-eldoc flycheck f enh-ruby-mode dired+ column-marker)))
+    (terraform-mode powerline json-mode diff-hl gist yaml-mode toml-mode smart-mode-line rust-mode ruby-block rubocop markdown-preview-eww markdown-mode magit js2-refactor go-eldoc flycheck f enh-ruby-mode dired+ column-marker)))
  '(save-place-mode t nil (saveplace))
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
