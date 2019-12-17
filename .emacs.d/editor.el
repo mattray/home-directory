@@ -22,9 +22,9 @@
 ;; show line numbers
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
-;; show git status
-(add-hook 'prog-mode-hook 'diff-hl-mode)
+;; magit settings
 (add-hook 'after-save-hook 'magit-after-save-refresh-status t)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
 ;; KEY BINDINGS
 ;; let's try hippie-expand

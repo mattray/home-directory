@@ -42,6 +42,7 @@
  '(flycheck-ruby-rubocop-executable "/opt/chefdk/bin/rubocop")
  '(flycheck-ruby-rubylint-executable "/usr/local/bin/ruby-lint")
  '(frame-title-format "%f" t)
+ '(global-diff-hl-mode t)
  '(load-home-init-file t t)
  '(magit-git-executable "/usr/local/bin/git")
  '(markdown-command "/usr/local/bin/markdown")
