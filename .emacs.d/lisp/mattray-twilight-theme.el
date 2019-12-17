@@ -19,15 +19,13 @@
 ;; MIT License Copyright (c) 2008 Marcus Crafter <crafterm@redartisan.com>
 ;; Credits due to the excellent TextMate Twilight theme
 ;;
-;; Thanks to Travis Jeffery for ido-mode and fixes to the minibuffer-prompt to fit in with the rest of the theme
-;;
 
 (deftheme mattray-twilight
   "Matt Ray's modifications to the Twilight color theme")
 
 (custom-theme-set-faces
  'mattray-twilight
- '(default ((t (:background "#001122" :foreground "#eeeeee"))))
+ '(default ((t (:background "#001122" :foreground "#efefef"))))
  '(cursor ((t (:foreground "yellow2"))))
  '(region ((t (:background "#003355"))))
  '(blue ((t (:foreground "blue"))))
@@ -36,7 +34,7 @@
  '(font-lock-builtin-face ((t (:foreground "#CACACA"))))
  '(font-lock-comment-face ((t (:foreground "#5F5A60"))))
  '(font-lock-constant-face ((t (:foreground "#CF6A4C"))))
- '(font-lock-doc-string-face ((t (:foreground "BlanchedAlmond"))))
+ '(font-lock-doc-string-face ((t (:foreground "#e5d3b8"))))
  '(font-lock-function-name-face ((t (:foreground "#9B703F"))))
  '(font-lock-keyword-face ((t (:foreground "#CDA869"))))
  '(font-lock-preprocessor-face ((t (:foreground "Aquamarine"))))
@@ -44,17 +42,13 @@
  '(font-lock-regexp-grouping-backslash ((t (:foreground "#E9C062"))))
  '(font-lock-regexp-grouping-construct ((t (:foreground "red"))))
  '(minibuffer-prompt ((t (:foreground "#5F5A60"))))
- '(ido-subdir ((t (:foreground "#CF6A4C"))))
- '(ido-first-match ((t (:foreground "#8F9D6A"))))
- '(ido-only-match ((t (:foreground "#8F9D6A"))))
- '(mumamo-background-chunk-submode ((t (:background "#222222"))))
  '(font-lock-string-face ((t (:foreground "#8F9D6A"))))
  '(font-lock-type-face ((t (:foreground "#9B703F"))))
  '(font-lock-variable-name-face ((t (:foreground "#7587A6"))))
  '(font-lock-warning-face ((t (:background "#EE799F" :foreground "red"))))
  '(gui-element ((t (:background "#D4D0C8" :foreground "black"))))
  '(region ((t (:background "#003355"))))
- '(mode-line ((t (:background "grey75" :foreground "#001122"))))
+ '(mode-line ((t (:background "#bfbfbf" :foreground "#001122"))))
  '(highlight ((t (:background "green3"))))
  '(highline-face ((t (:background "SeaGreen"))))
  '(left-margin ((t (nil))))
@@ -70,8 +64,8 @@
  '(ruby-op-face ((t (:foreground "#CDA869"))))
 
  ;; line-number-mode
- '(line-number ((t (:foreground "#000409" :background "#001122"))))
- '(line-number-current-line ((t (:foreground "BlanchedAlmond" :background "#003355"))))
+ '(line-number ((t (:foreground "#5f5a60" :background "#001122"))))
+ '(line-number-current-line ((t (:foreground "#aba6ac" :background "#003355"))))
 
  '(hl-line ((t (:background "#1111FF"))))
  '(yas/field-highlight-face ((t (:background "#27292A"))))
