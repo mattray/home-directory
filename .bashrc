@@ -52,6 +52,7 @@ alias gits="git status -s" #short status
 alias gits?="git status -s | grep -v \?\?" #ignore unknowns
 alias gitst="git status" #long status
 alias gitus="git unstage" #unstage a change alias was set with 'git config --global alias.unstage "reset HEAD"'
+alias gitx="stree" # Atlassian's Sourcetree is a good replacement
 
 alias gem_push="echo double check your permissions"
 alias rspec="rspec --format documentation"
