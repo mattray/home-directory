@@ -2,10 +2,14 @@
 # symbol = "✦"
 # symbol = "⬢"
 
+add_newline = false
+
 [character]
-symbol = "➜"
+symbol = "$"
 use_symbol_for_status = true
-error_symbol = "✗➜"
+error_symbol = "✗$"
+style_success = "green"
+style_failure = "red"
 
 [aws]
 disabled = true
