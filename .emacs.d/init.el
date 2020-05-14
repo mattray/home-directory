@@ -18,7 +18,7 @@
 (load-file "~/.emacs.d/shell.el")
 ;; (load-file "~/.emacs.d/xml.el")
 ;; (load-file "~/.emacs.d/rust.el")
-(load-file "~/.emacs.d/toml.el")
+;;(load-file "~/.emacs.d/toml.el")
 (load-file "~/.emacs.d/yaml.el")
 (load-file "~/.emacs.d/editor.el")
 (load-file "~/.emacs.d/dired.el")
@@ -28,8 +28,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ ;;["black" "red" "green" "yellow" "blue" "magenta" "cyan" "white"]
  '(ansi-color-names-vector
-   ["black" "olive drab" "green1" "yellow3" "blue2" "magenta3" "cyan3" "gray90"])
+   ["black" "#aa0000" "#00cd66" "#cdcd00" "#0066ff" "#cc0066" "#40e0d0" "gray92"])
  '(auto-compression-mode t nil (jka-compr))
  '(case-fold-search t)
  '(column-number-mode t)
@@ -39,7 +40,7 @@
    (quote
     ("3b1a0c5b02862eec5f1b3f3f4145fd5a8b02d65beb13d8fa8a6262e280f87119" default)))
  '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
- '(flycheck-ruby-rubocop-executable "/opt/chefdk/bin/rubocop")
+ '(flycheck-ruby-rubocop-executable "/opt/chef-workstation/bin/rubocop")
  '(flycheck-ruby-rubylint-executable "/usr/local/bin/ruby-lint")
  '(frame-title-format "%f" t)
  '(global-diff-hl-mode t)
@@ -48,7 +49,7 @@
  '(markdown-command "/usr/local/bin/markdown")
  '(package-selected-packages
    (quote
-    (terraform-mode powerline json-mode diff-hl gist yaml-mode toml-mode smart-mode-line rust-mode ruby-block rubocop markdown-preview-eww markdown-mode magit js2-refactor go-eldoc flycheck f enh-ruby-mode dired+ column-marker)))
+    (terraform-mode powerline json-mode diff-hl gist yaml-mode smart-mode-line rust-mode ruby-block rubocop markdown-preview-eww markdown-mode magit js2-refactor go-eldoc flycheck f enh-ruby-mode dired+ column-marker)))
  '(save-place-mode t nil (saveplace))
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
