@@ -11,6 +11,7 @@
       `((".*" ,temporary-file-directory t)))
 
 ;; UI SETTINGS
+(setq custom--inhibit-theme-enable nil)
 (require 'mattray-twilight-theme)
 ;; powerline
 (require 'powerline-mattray-theme)
