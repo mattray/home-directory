@@ -1,8 +1,6 @@
 export GOPATH=$HOME/go
 export RUSTPATH=$HOME/.cargo
-export PATH+=:$HOME/bin:/usr/local/go/bin:$GOPATH/bin
-
-umask 077
+export PATH+=/opt/chef-workstation/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin
 
 # Ignore commands starting with a space, duplicates, and a few others.
 export HISTIGNORE="[ ]*:&:bg:fg:ls -l:ls -al:ls -la:ls1:lsa:lsr:gits:gits?"
@@ -11,7 +9,14 @@ export HISTFILESIZE=200000
 export HISTSIZE=200000
 shopt -s histappend
 
+export EDITOR=emacsclient
+export GIT_EDITOR=$EDITOR
 export HAB_ORIGIN=mattray
+
+export AUTOMATE_URL='https://roberto.bottlebrush.sh'
+export AUTOMATE_TOKEN='sYKAqcY2H30ns7RTq7jCHNQ5vKs='
+
+umask 077
 
 # emacs M-x shell
 if [ "dumb" == "$TERM" ] ; then
@@ -23,9 +28,6 @@ else
     alias l='less'
     alias m='more'
 fi
-
-export EDITOR=emacsclient
-export GIT_EDITOR=$EDITOR
 
 # Some more alias to avoid making mistakes:
 alias cp='cp -i'
@@ -69,5 +71,20 @@ pman () {
 }
 
 source /usr/local/opt/chruby/share/chruby/chruby.sh
+chruby ruby-2.7
 
+. ~/.creds
+
+# Azure shell command completion
+# source '/Users/mray/lib/azure-cli/az.completion'
+
+# The next line updates PATH for the Google Cloud SDK.
+# if [ -f '/Users/mattray/ws/google-cloud-sdk/path.bash.inc' ]; then . '/Users/mattray/ws/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+# if [ -f '/Users/mattray/ws/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/mattray/ws/google-cloud-sdk/completion.bash.inc'; fi
+
+# export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
+
+# replace the PS1
 eval "$(starship init bash)"
