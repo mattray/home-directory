@@ -22,6 +22,7 @@
 (load-file "~/.emacs.d/yaml.el")
 (load-file "~/.emacs.d/editor.el")
 (load-file "~/.emacs.d/dired.el")
+(load-file "~/.emacs.d/tramp.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
