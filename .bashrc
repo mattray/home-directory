@@ -1,3 +1,29 @@
+# linux
+# if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+# macos
+# elif [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # Atlassian's Sourcetree is a good replacement
+  alias gitx="stree"
+
+  #show the file in OSX Finder
+  alias reveal="open -R"
+
+  #notification message
+  alias ndone='terminal-notifier -title DONE -message `date "+$?:%H:%M:%S"` >> /dev/null'
+
+  pman () {
+    man -t "${1}" | open -f -a /Applications/Preview.app
+  }
+
+  # Setting PATH for Python 3.7
+  # The original version is saved in .bash_profile.pysave
+  PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
+  export PATH
+
+  . ~/.creds
+fi
+
 export GOPATH=$HOME/go
 export RUSTPATH=$HOME/.cargo
 export PATH+=/opt/chef-workstation/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin
@@ -13,20 +39,20 @@ export EDITOR=emacsclient
 export GIT_EDITOR=$EDITOR
 export HAB_ORIGIN=mattray
 
-export AUTOMATE_URL='https://roberto.bottlebrush.sh'
+export AUTOMATE_URL='https://roberto.bottlebru.sh'
 export AUTOMATE_TOKEN='sYKAqcY2H30ns7RTq7jCHNQ5vKs='
 
 umask 077
 
 # emacs M-x shell
 if [ "dumb" == "$TERM" ] ; then
-    alias m='cat'
-    alias less='cat'
-    alias more='cat'
-    export PAGER=cat
+  alias m='cat'
+  alias less='cat'
+  alias more='cat'
+  export PAGER=cat
 else
-    alias l='less'
-    alias m='more'
+  alias l='less'
+  alias m='more'
 fi
 
 # Some more alias to avoid making mistakes:
@@ -53,27 +79,14 @@ alias gits="git status -s" #short status
 alias gits?="git status -s | grep -v \?\?" #ignore unknowns
 alias gitst="git status" #long status
 alias gitus="git unstage" #unstage a change alias was set with 'git config --global alias.unstage "reset HEAD"'
-alias gitx="stree" # Atlassian's Sourcetree is a good replacement
 
 alias gem_push="echo double check your permissions"
 alias rspec="rspec --format documentation"
 
 alias grep="grep --color=auto"
 
-#show the file in OSX Finder
-alias reveal="open -R"
-
-#notification message
-alias ndone='terminal-notifier -title DONE -message `date "+$?:%H:%M:%S"` >> /dev/null'
-
-pman () {
-    man -t "${1}" | open -f -a /Applications/Preview.app
-}
-
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 chruby ruby-2.7
-
-. ~/.creds
 
 # Azure shell command completion
 # source '/Users/mray/lib/azure-cli/az.completion'
