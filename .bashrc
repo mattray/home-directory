@@ -50,6 +50,7 @@ if [ "dumb" == "$TERM" ] ; then
   alias less='cat'
   alias more='cat'
   export PAGER=cat
+  export TERM=xterm-256color
 else
   alias l='less'
   alias m='more'
