@@ -5,11 +5,8 @@
 add_newline = false
 
 [character]
-symbol = "$"
-use_symbol_for_status = true
-error_symbol = "✗$"
-style_success = "green"
-style_failure = "red"
+success_symbol = "[\\$](bold green)"
+error_symbol = "[☝ \\$](bold red)"
 
 [aws]
 disabled = true
@@ -17,20 +14,19 @@ disabled = true
 [cmd_duration]
 style =	"cyan"
 min_time = 5000
-prefix = "time:"
 
 [directory]
 style = "blue"
 truncate_to_repo = false
 truncation_length = 10
-prefix = ""
-suffix = ""
+truncation_symbol = "…/"
+
+[gcloud]
+disabled = true
 
 [git_branch]
 style =	"green"
 symbol = ":"
-prefix = ""
-suffix = ""
 
 [git_status]
 style =	"green"
@@ -48,29 +44,27 @@ show_sync_count = true
 
 [hostname]
 style =	"yellow"
-ssh_only = true
+ssh_only = false
 
 [jobs]
 style =	"black"
 symbol = "✦"
 threshold = 1
 
+[python]
+format = "[${symbol}${pyenv_prefix}${version}( \\($virtualenv\\))]($style) "
+style = "yellow"
+symbol = "𝒫:"
+
 [ruby]
-prefix = ""
-suffix = ""
 style =	"red"
 symbol = "ℜ:"
 
 [terraform]
-prefix = ""
-suffix = ""
 style =	"purple"
 symbol = "Τ:"
 
 [username]
-prefix = ""
-suffix = ""
 style_user = "white"
 style_root = "red"
 show_always = false
-disabled = false
