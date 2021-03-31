@@ -41,8 +41,7 @@
    (quote
     ("3b1a0c5b02862eec5f1b3f3f4145fd5a8b02d65beb13d8fa8a6262e280f87119" default)))
  '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
- '(flycheck-ruby-rubocop-executable "/opt/chef-workstation/bin/rubocop")
- '(flycheck-ruby-rubylint-executable "/usr/local/bin/ruby-lint")
+ '(flycheck-ruby-rubocop-executable "/opt/chef-workstation/embedded/bin/rubocop")
  '(frame-title-format "%f" t)
  '(global-diff-hl-mode t)
  '(load-home-init-file t t)
