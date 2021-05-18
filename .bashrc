@@ -26,7 +26,7 @@ fi
 
 export GOPATH=$HOME/go
 export RUSTPATH=$HOME/.cargo
-export PATH+=/opt/chef-workstation/bin:$HOME/bin:/usr/local/go/bin:$GOPATH/bin
+export PATH=$HOME/bin:/opt/chef-workstation/bin:/opt/chef-workstation/embedded/bin:/usr/local/go/bin:$GOPATH/bin:$PATH
 
 # Ignore commands starting with a space, duplicates, and a few others.
 export HISTIGNORE="[ ]*:&:bg:fg:ls -l:ls -al:ls -la:ls1:lsa:lsr:gits:gits?"
