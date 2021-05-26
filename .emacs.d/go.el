@@ -5,7 +5,7 @@
 ;;(require 'go-mode-autoloads)
 (setenv "GOPATH" (getenv "GOPATH"))
 (setenv "PATH" (getenv "PATH"))
-(setq exec-path (append exec-path '("/usr/local/go/bin") '("/Users/mray/go/bin")))
+(setq exec-path (append exec-path '("/usr/local/go/bin") '("/Users/mattray/go/bin")))
 ;; https://github.com/syohex/emacs-go-eldoc
 (add-to-list 'load-path "~/.emacs.d/elpa/go-eldoc-20170305.627/")
 (require 'go-eldoc)
