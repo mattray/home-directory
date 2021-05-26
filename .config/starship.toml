@@ -1,12 +1,15 @@
+# Tested with Starship 0.54
+
 # https://en.wikipedia.org/wiki/Letterlike_Symbols is awesome
 # symbol = "✦"
 # symbol = "⬢"
 
 add_newline = false
+command_timeout = 1000 # default was 500
 
 [character]
-success_symbol = "[\\$](bold green)"
 error_symbol = "[☝ \\$](bold red)"
+success_symbol = "[\\$](bold green)"
 
 [aws]
 disabled = true
@@ -40,11 +43,10 @@ renamed = "»"
 staged = "+"
 stashed = "$"
 untracked = "?"
-show_sync_count = true
 
 [hostname]
-style =	"yellow"
 ssh_only = false
+style =	"yellow"
 
 [jobs]
 style =	"black"
@@ -65,6 +67,7 @@ style =	"purple"
 symbol = "Τ:"
 
 [username]
-style_user = "white"
+format = "[$user]($style)@"
+show_always = true
 style_root = "red"
-show_always = false
+style_user = "white"
