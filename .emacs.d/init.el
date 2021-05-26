@@ -14,7 +14,8 @@
 (load-file "~/.emacs.d/macos.el")
 ;; (load-file "~/.emacs.d/json.el")
 (load-file "~/.emacs.d/markdown.el")
-(load-file "~/.emacs.d/ruby.el")
+;; (load-file "~/.emacs.d/go.el")
+;;(load-file "~/.emacs.d/ruby.el")
 (load-file "~/.emacs.d/shell.el")
 ;; (load-file "~/.emacs.d/xml.el")
 ;; (load-file "~/.emacs.d/rust.el")
@@ -40,13 +41,13 @@
  '(custom-safe-themes
    (quote
     ("3b1a0c5b02862eec5f1b3f3f4145fd5a8b02d65beb13d8fa8a6262e280f87119" default)))
- '(explicit-bash-args (quote ("--noediting" "-i" "-l")))
- '(flycheck-ruby-rubocop-executable "/opt/chef-workstation/embedded/bin/rubocop")
+ '(explicit-shell-file-name "/bin/zsh")
+ '(explicit-zsh-args '("--interactive" "--login"))
  '(frame-title-format "%f" t)
  '(global-diff-hl-mode t)
  '(load-home-init-file t t)
- '(magit-git-executable "/usr/local/bin/git")
- '(markdown-command "/usr/local/bin/markdown")
+ '(magit-git-executable "/opt/homebrew/bin/git")
+ '(markdown-command "/opt/homebrew/bin/markdown")
  '(package-selected-packages
    (quote
     (terraform-mode powerline json-mode diff-hl gist yaml-mode smart-mode-line rust-mode ruby-block rubocop markdown-preview-eww markdown-mode magit js2-refactor go-eldoc flycheck f enh-ruby-mode dired+ column-marker)))
@@ -56,7 +57,7 @@
  '(standard-display-ascii 9 t)
  '(tool-bar-mode nil nil (tool-bar))
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
- '(visible-bell f))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
