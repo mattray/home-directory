@@ -1,8 +1,6 @@
 # Used for setting user's interactive shell configuration and executing commands, will be read when starting as an interactive shell.
 # For simplicity’s sake, you should use just one file. The common choice is .zshrc.
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 # share history across multiple zsh sessions
 setopt SHARE_HISTORY
 # append to history
@@ -19,10 +17,6 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 # removes blank lines from history
 setopt HIST_REDUCE_BLANKS
-
-# shell corrections
-# setopt CORRECT
-# setopt CORRECT_ALL
 
 umask 077
 
@@ -68,5 +62,24 @@ alias gitst="git status" #long status
 alias gitus="git unstage" #unstage a change alias was set with 'git config --global alias.unstage "reset HEAD"'
 
 export GIT_EDITOR=$EDITOR
+
+# linux
+if [[ $OSTYPE == "linux-gnu"* ]]; then
+  export PATH=/opt/chef-workstation/bin:/opt/chef-workstation/embedded/bin:/usr/local/bin:$PATH
+# macos
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  # Atlassian's Sourcetree is a good replacement
+  alias gitx="stree"
+
+  #show the file in OSX Finder
+  alias reveal="open -R"
+
+  #notification message
+  alias ndone='terminal-notifier -title DONE -message `date "+$?:%H:%M:%S"` >> /dev/null'
+
+  . ~/.creds
+
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 eval "$(starship init zsh)"
