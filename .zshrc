@@ -27,17 +27,17 @@ setopt HIST_REDUCE_BLANKS
 umask 077
 
 # emacs M-x shell
-#if [ "dumb" == "$TERM" ] ; then
+if [[ "dumb" == $TERM ]] ; then
   alias l='cat'
   alias less='cat'
   alias m='cat'
   alias more='cat'
   export PAGER=cat
   export TERM=xterm-256color
-# else
-#   alias l='less'
-#   alias m='more'
-# fi
+else
+  alias l='less'
+  alias m='more'
+fi
 
  # Some more alias to avoid making mistakes:
 alias cp='cp -i'
