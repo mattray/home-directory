@@ -36,6 +36,7 @@
  '(auto-compression-mode t nil (jka-compr))
  '(case-fold-search t)
  '(column-number-mode t)
+ '(comint-process-echoes 0) ;; turn off echoed commands from zsh
  '(current-language-environment "ASCII")
  '(custom-browse-sort-alphabetically t)
  '(custom-safe-themes
