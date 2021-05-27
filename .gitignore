@@ -3,10 +3,13 @@
 *~
 .Trash
 .cache
+.chef
 .cups
 .dropbox
+.kitchen
 .local
 .ssh
+.vagrant.d
 .zsh_history
 Desktop
 Documents
@@ -24,6 +27,7 @@ Projects
 Public
 Reading
 Sites
+VirtualBox*
 arch
 build
 go
