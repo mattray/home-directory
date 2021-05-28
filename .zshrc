@@ -1,6 +1,9 @@
 # Used for setting user's interactive shell configuration and executing commands, will be read when starting as an interactive shell.
 # For simplicity’s sake, you should use just one file. The common choice is .zshrc.
 
+# https://www.emacswiki.org/emacs/TrampMode#h5o-9
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
+
 # share history across multiple zsh sessions
 setopt SHARE_HISTORY
 # append to history
