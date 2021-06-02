@@ -14,7 +14,7 @@
 (load-file "~/.emacs.d/macos.el")
 ;; (load-file "~/.emacs.d/json.el")
 (load-file "~/.emacs.d/markdown.el")
-;; (load-file "~/.emacs.d/go.el")
+(load-file "~/.emacs.d/go.el")
 ;;(load-file "~/.emacs.d/ruby.el")
 (load-file "~/.emacs.d/shell.el")
 ;; (load-file "~/.emacs.d/xml.el")
@@ -30,18 +30,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;;["black" "red" "green" "yellow" "blue" "magenta" "cyan" "white"]
  '(ansi-color-names-vector
    ["black" "#aa0000" "#00cd66" "#cdcd00" "#0066ff" "#cc0066" "#40e0d0" "gray92"])
  '(auto-compression-mode t nil (jka-compr))
  '(case-fold-search t)
  '(column-number-mode t)
- '(comint-process-echoes 0) ;; turn off echoed commands from zsh
+ '(comint-process-echoes 0)
  '(current-language-environment "ASCII")
  '(custom-browse-sort-alphabetically t)
  '(custom-safe-themes
-   (quote
-    ("3b1a0c5b02862eec5f1b3f3f4145fd5a8b02d65beb13d8fa8a6262e280f87119" default)))
+   '("3b1a0c5b02862eec5f1b3f3f4145fd5a8b02d65beb13d8fa8a6262e280f87119" default))
  '(explicit-shell-file-name "/bin/zsh")
  '(explicit-zsh-args '("--interactive" "--login"))
  '(frame-title-format "%f" t)
@@ -50,15 +48,13 @@
  '(magit-git-executable "/opt/homebrew/bin/git")
  '(markdown-command "/opt/homebrew/bin/markdown")
  '(package-selected-packages
-   (quote
-    (terraform-mode powerline json-mode diff-hl gist yaml-mode smart-mode-line rust-mode ruby-block rubocop markdown-preview-eww markdown-mode magit js2-refactor go-eldoc flycheck f enh-ruby-mode dired+ column-marker)))
+   '(flymake-go-staticcheck company auto-complete lsp-mode exec-path-from-shell terraform-mode powerline json-mode diff-hl gist yaml-mode smart-mode-line ruby-block rubocop markdown-preview-eww markdown-mode magit js2-refactor go-mode go-autocomplete f enh-ruby-mode dired+ column-marker))
  '(save-place-mode t nil (saveplace))
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
  '(standard-display-ascii 9 t)
  '(tool-bar-mode nil nil (tool-bar))
- '(uniquify-buffer-name-style (quote forward) nil (uniquify))
- )
+ '(uniquify-buffer-name-style 'forward nil (uniquify)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
