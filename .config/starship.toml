@@ -44,6 +44,10 @@ staged = "+"
 stashed = "$"
 untracked = "?"
 
+[golang]
+style = "cyan"
+symbol = "ℊ:"
+
 [hostname]
 ssh_only = false
 style =	"yellow"
@@ -56,7 +60,7 @@ threshold = 1
 [python]
 format = "[${symbol}${pyenv_prefix}${version}( \\($virtualenv\\))]($style) "
 style = "yellow"
-symbol = "𝒫:"
+symbol = "℘:"
 
 [ruby]
 style =	"red"
