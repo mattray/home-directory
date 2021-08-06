@@ -48,7 +48,30 @@
  '(magit-git-executable "/opt/homebrew/bin/git")
  '(markdown-command "/opt/homebrew/bin/markdown")
  '(package-selected-packages
-   '(flymake-go-staticcheck company auto-complete lsp-mode exec-path-from-shell terraform-mode powerline json-mode diff-hl gist yaml-mode smart-mode-line ruby-block rubocop markdown-preview-eww markdown-mode magit js2-refactor go-mode go-autocomplete f enh-ruby-mode dired+ column-marker))
+   '(
+     auto-complete
+     column-marker
+     company
+     diff-hl
+     enh-ruby-mode
+     exec-path-from-shell
+     f
+     flymake-go-staticcheck
+     gist
+     go-autocomplete
+     go-mode
+     json-mode
+     lsp-mode
+     magit
+     markdown-mode
+     markdown-preview-eww
+     powerline
+     rubocop
+     ruby-block
+     smart-mode-line
+     terraform-mode
+     yaml-mode
+     ))
  '(save-place-mode t nil (saveplace))
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
