@@ -14,7 +14,7 @@
 ;; 0O 1l
 ;; (set-face-font 'default "-*-bitstream vera sans mono-medium-r-*--18-*-*-*-*-*-*-*")
 ;; (set-face-font 'default "-apple-inconsolata-medium-r-normal--18-*-*-*-*-*-*-*")
-(set-face-font 'default "-*-Inconsolata for Powerline-normal-normal-normal-*-18-*-*-*-m-0-iso10646-1")
+(set-face-font 'default "-*-Inconsolatadz for Powerline-normal-normal-normal-*-18-*-*-*-m-0-iso10646-1")
 
 (defun jfb-set-mac-font (name  size)
   (interactive
