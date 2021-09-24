@@ -9,7 +9,7 @@ setopt SHARE_HISTORY
 # append to history
 setopt APPEND_HISTORY
 # adds commands as they are typed, not at shell exit
-setopt INC_APPEND_HISTORY
+# setopt INC_APPEND_HISTORY
 # expire duplicates first
 setopt HIST_EXPIRE_DUPS_FIRST
 # do not store duplications
@@ -78,11 +78,14 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   alias reveal="open -R"
 
   #notification message
-  alias ndone='terminal-notifier -title DONE -message `date "+$?:%H:%M:%S"` >> /dev/null'
+  alias ndone='terminal-notifier -title COMPLETED -message "`date`" -sound default >> /dev/null'
 
   . ~/.creds
 
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 eval "$(starship init zsh)"
