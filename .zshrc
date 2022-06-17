@@ -90,3 +90,8 @@ source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completi
 
 eval "$(starship init zsh)"
 [[ /opt/homebrew/bin/kubectl ]] && source <(kubectl completion zsh) # add autocomplete permanently to your zsh shell
+
+alias k='kubectl'
+alias ka='kubectl apply'
+alias kd='kubectl describe'
+alias kg='kubectl get'
