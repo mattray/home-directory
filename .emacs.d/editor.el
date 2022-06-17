@@ -17,6 +17,9 @@
 (add-hook 'diff-mode-hook (lambda () (interactive) (column-marker-1 72)))
 (add-hook 'prog-mode-hook (lambda () (interactive) (column-marker-1 80)))
 
+;; add yafolding https://github.com/zenozeng/yafolding.el
+(add-hook 'prog-mode-hook (lambda () (yafolding-mode)))
+
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . diff-mode))
 
 ;; show line numbers
