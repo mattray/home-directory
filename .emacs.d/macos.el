@@ -1,7 +1,7 @@
 ;; OSX SETTINGS
 (setq default-frame-alist
-      '((top . 30) (left . 1)
-        (width . 167) (height . 37)))
+      '((top . 1) (left . 0)
+        (width . 128) (height . 36)))
 (set-frame-parameter (selected-frame) 'alpha '(99 95))
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
