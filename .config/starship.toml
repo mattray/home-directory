@@ -1,4 +1,4 @@
-# Tested with Starship 0.54
+# Tested with Starship 1.6.3
 
 # https://en.wikipedia.org/wiki/Letterlike_Symbols is awesome
 # symbol = "✦"
@@ -6,6 +6,80 @@
 
 add_newline = false
 command_timeout = 1000 # default was 500
+continuation_prompt = "❯ "
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$vcsh\
+$hg_branch\
+$docker_context\
+$package\
+$buf\
+$c\
+$cmake\
+$cobol\
+$container\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$haskell\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$nix_shell\
+$conda\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$time\
+$directory\
+$line_break\
+$jobs\
+$battery\
+$status\
+$shell\
+$character"""
 
 [character]
 error_symbol = "[☝ \\$](bold red)"
@@ -19,6 +93,7 @@ style =	"cyan"
 min_time = 5000
 
 [directory]
+format = "[$path]($style)[$read_only]($read_only_style)"
 style = "blue"
 truncate_to_repo = false
 truncation_length = 10
@@ -30,6 +105,7 @@ disabled = true
 [git_branch]
 style =	"green"
 symbol = ":"
+format = "[$symbol$branch(:$remote_branch)]($style) "
 
 [git_status]
 style =	"green"
@@ -50,12 +126,16 @@ symbol = "ℊ:"
 
 [hostname]
 ssh_only = false
-style =	"yellow"
+format = "[$hostname](yellow) "
 
 [jobs]
 style =	"black"
 symbol = "✦"
 threshold = 1
+
+[kubernetes]
+format = '[☸:$cluster\[$namespace\]](dimmed cyan) '
+disabled = false
 
 [python]
 format = "[${symbol}${pyenv_prefix}${version}( \\($virtualenv\\))]($style) "
@@ -65,10 +145,16 @@ symbol = "℘:"
 [ruby]
 style =	"red"
 symbol = "ℜ:"
+format = "[$symbol($version )]($style)"
 
 [terraform]
 style =	"purple"
 symbol = "Τ:"
+
+[time]
+disabled = false
+time_format = "%R"
+format = '[\[$time\]](white) '
 
 [username]
 format = "[$user]($style)@"
