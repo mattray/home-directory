@@ -66,18 +66,24 @@
      markdown-mode
      markdown-preview-eww
      powerline
+     rego-mode
      rubocop
      ruby-block
      smart-mode-line
      terraform-mode
+     yafolding
      yaml-mode
      ))
+ '(rego-opa-command "/opt/homebrew/bin/opa")
+ '(rego-repl-executable "/opt/homebrew/bin/opa")
  '(save-place-mode t nil (saveplace))
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
  '(standard-display-ascii 9 t)
  '(tool-bar-mode nil nil (tool-bar))
- '(uniquify-buffer-name-style 'forward nil (uniquify)))
+ '(uniquify-buffer-name-style 'forward nil (uniquify))
+ '(warning-suppress-log-types '((comp) (comp)))
+ '(warning-suppress-types '((comp) (comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
