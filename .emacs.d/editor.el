@@ -19,6 +19,7 @@
 
 ;; add yafolding https://github.com/zenozeng/yafolding.el
 (add-hook 'prog-mode-hook (lambda () (yafolding-mode)))
+(add-hook 'json-mode-hook (lambda () (yafolding-mode)))
 
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . diff-mode))
 
