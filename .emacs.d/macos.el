@@ -29,3 +29,5 @@
 
 (add-to-list 'default-frame-alist
              '(ns-appearance . dark))
+
+(setq delete-by-moving-to-trash t)
