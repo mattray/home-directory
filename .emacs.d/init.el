@@ -20,6 +20,7 @@
 ;; (load-file "~/.emacs.d/xml.el")
 ;; (load-file "~/.emacs.d/rust.el")
 ;;(load-file "~/.emacs.d/toml.el")
+(load-file "~/.emacs.d/javascript.el")
 (load-file "~/.emacs.d/yaml.el")
 (load-file "~/.emacs.d/editor.el")
 (load-file "~/.emacs.d/dired.el")
@@ -90,6 +91,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(tooltip-mode -1)
+(setq tooltip-use-echo-area t)
 
 ;; if you want a Tramp shell on a remote box, open a file there first
 ;; C-x C-f /ssh:vagrant@127.0.0.1#2222:/tmp/file

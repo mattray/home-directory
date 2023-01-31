@@ -8,8 +8,8 @@
 setopt SHARE_HISTORY
 # append to history
 setopt APPEND_HISTORY
-# adds commands as they are typed, not at shell exit
-# setopt INC_APPEND_HISTORY
+# don't add commands as they are typed, not at shell exit
+unsetopt INC_APPEND_HISTORY
 # expire duplicates first
 setopt HIST_EXPIRE_DUPS_FIRST
 # do not store duplications
@@ -95,3 +95,9 @@ alias k='kubectl'
 alias ka='kubectl apply'
 alias kd='kubectl describe'
 alias kg='kubectl get'
+alias kge='kubectl get events --sort-by=.metadata.creationTimestamp'
+alias kl='kubectl logs'
+alias yancy='export KUBECONFIG=/Users/mattray/.kube/yancy-k3s.yaml'
+alias mom='export KUBECONFIG=/Users/mattray/.kube/mom-k3s.yaml'
+
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
