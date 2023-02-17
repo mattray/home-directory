@@ -41,6 +41,7 @@
  '(custom-browse-sort-alphabetically t)
  '(custom-safe-themes
    '("3b1a0c5b02862eec5f1b3f3f4145fd5a8b02d65beb13d8fa8a6262e280f87119" default))
+ '(display-time-mode t)
  '(explicit-shell-file-name "/bin/zsh")
  '(explicit-zsh-args '("--interactive" "--login"))
  '(frame-title-format "%f" t)
@@ -79,7 +80,6 @@
  '(rego-repl-executable "/opt/homebrew/bin/opa")
  '(save-place-mode t nil (saveplace))
  '(scroll-bar-mode nil)
- '(show-paren-mode t nil (paren))
  '(standard-display-ascii 9 t)
  '(tool-bar-mode nil nil (tool-bar))
  '(uniquify-buffer-name-style 'forward nil (uniquify))
