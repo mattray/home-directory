@@ -5,15 +5,15 @@
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
 
 # share history across multiple zsh sessions
-setopt SHARE_HISTORY
+# setopt SHARE_HISTORY
 # append to history
 setopt APPEND_HISTORY
-# don't add commands as they are typed, not at shell exit
-unsetopt INC_APPEND_HISTORY
+# add commands as they are typed, not at shell exit
+setopt INC_APPEND_HISTORY
 # expire duplicates first
 setopt HIST_EXPIRE_DUPS_FIRST
-# do not store duplications
-setopt HIST_IGNORE_DUPS
+# do not store duplications, remove older commands
+setopt HIST_IGNORE_ALL_DUPS
 # remove commandwhen the first character on the line is a space
 setopt HIST_IGNORE_SPACE
 #ignore duplicates when searching
