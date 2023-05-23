@@ -28,6 +28,13 @@
 (add-hook 'conf-mode-hook 'display-line-numbers-mode)
 (add-hook 'yaml-mode-hook 'display-line-numbers-mode)
 
+;; https://git.savannah.gnu.org/cgit/emacs.git/tree/admin/notes/tree-sitter/starter-guide?h=feature/tree-sitter
+;; https://emacs-tree-sitter.github.io/installation/
+(require 'tree-sitter)
+(require 'tree-sitter-langs)
+(add-to-list 'treesit-extra-load-path "/Users/mattray/.emacs.d/tree-sitter-module/dist")
+(global-tree-sitter-mode)
+
 ;; KEY BINDINGS
 ;; let's try hippie-expand
 (global-set-key [remap dabbrev-expand] 'hippie-expand)

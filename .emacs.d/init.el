@@ -9,22 +9,24 @@
 (package-initialize)
 ;; M-x package-list-packages, type U (mark Upgradable packages) and then x (eXecute the installs and deletions). When it’s done installing all the packages it will ask if you want to delete the obsolete packages and so you can hit y (Yes).
 
-(load-file "~/.emacs.d/global.el")
-(load-file "~/.emacs.d/flyspell.el")
 (load-file "~/.emacs.d/macos.el")
-;; (load-file "~/.emacs.d/json.el")
-(load-file "~/.emacs.d/markdown.el")
-(load-file "~/.emacs.d/go.el")
-;;(load-file "~/.emacs.d/ruby.el")
-(load-file "~/.emacs.d/shell.el")
-;; (load-file "~/.emacs.d/xml.el")
-;; (load-file "~/.emacs.d/rust.el")
-;;(load-file "~/.emacs.d/toml.el")
-(load-file "~/.emacs.d/javascript.el")
-(load-file "~/.emacs.d/yaml.el")
-(load-file "~/.emacs.d/editor.el")
+(load-file "~/.emacs.d/global.el")
 (load-file "~/.emacs.d/dired.el")
+(load-file "~/.emacs.d/editor.el")
+(load-file "~/.emacs.d/flyspell.el")
+(load-file "~/.emacs.d/shell.el")
 (load-file "~/.emacs.d/tramp.el")
+;; languages
+(load-file "~/.emacs.d/go.el")
+(load-file "~/.emacs.d/javascript.el")
+(load-file "~/.emacs.d/markdown.el")
+(load-file "~/.emacs.d/typescript.el")
+(load-file "~/.emacs.d/yaml.el")
+;;(load-file "~/.emacs.d/json.el")
+;;(load-file "~/.emacs.d/rust.el")
+;;(load-file "~/.emacs.d/xml.el")
+;;(load-file "~/.emacs.d/ruby.el")
+;;(load-file "~/.emacs.d/toml.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -37,6 +39,12 @@
  '(case-fold-search t)
  '(column-number-mode t)
  '(comint-process-echoes 0)
+ '(connection-local-criteria-alist
+   '(((:application eshell)
+      eshell-connection-default-profile)))
+ '(connection-local-profile-alist
+   '((eshell-connection-default-profile
+      (eshell-path-env-list))))
  '(current-language-environment "ASCII")
  '(custom-browse-sort-alphabetically t)
  '(custom-safe-themes
@@ -73,6 +81,8 @@
      ruby-block
      smart-mode-line
      terraform-mode
+     tree-sitter
+     tree-sitter-langs
      yafolding
      yaml-mode
      ))
