@@ -34,6 +34,8 @@
 (require 'tree-sitter-langs)
 (add-to-list 'treesit-extra-load-path "/Users/mattray/.emacs.d/tree-sitter-module/dist")
 (global-tree-sitter-mode)
+(add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
+
 
 ;; KEY BINDINGS
 ;; let's try hippie-expand
