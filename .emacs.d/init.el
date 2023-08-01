@@ -86,6 +86,7 @@
      yafolding
      yaml-mode
      ))
+ '(pixel-scroll-precision-mode t)
  '(rego-opa-command "/opt/homebrew/bin/opa")
  '(rego-repl-executable "/opt/homebrew/bin/opa")
  '(save-place-mode t nil (saveplace))
