@@ -91,6 +91,7 @@
  '(rego-repl-executable "/opt/homebrew/bin/opa")
  '(save-place-mode t nil (saveplace))
  '(scroll-bar-mode nil)
+ '(show-paren-context-when-offscreen t)
  '(standard-display-ascii 9 t)
  '(tool-bar-mode nil nil (tool-bar))
  '(uniquify-buffer-name-style 'forward nil (uniquify))
