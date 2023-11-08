@@ -42,6 +42,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 alias cl='clear'
+alias gzh='grep /Users/mattray/.zsh_history -e'
 alias grep="grep --color=auto"
 
 # ls/exa
@@ -85,8 +86,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 eval "$(starship init zsh)"
 [[ /opt/homebrew/bin/kubectl ]] && source <(kubectl completion zsh) # add autocomplete permanently to your zsh shell
@@ -97,7 +98,15 @@ alias kd='kubectl describe'
 alias kg='kubectl get'
 alias kge='kubectl get events --sort-by=.metadata.creationTimestamp'
 alias kl='kubectl logs'
-alias yancy='export KUBECONFIG=/Users/mattray/.kube/yancy-k3s.yaml'
-alias mom='export KUBECONFIG=/Users/mattray/.kube/mom-k3s.yaml'
+# short alias to set/show context/namespace (only works for bash and bash-compatible shells, current context to be set before using kn to set namespace)
+alias kx='f() { [ "$1" ] && kubectl config use-context $1 || kubectl config current-context ; } ; f'
+alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 || kubectl config view --minify | grep namespace | cut -d" " -f6 ; } ; f'
+alias kube-aws='export KUBECONFIG=/Users/mattray/.kube/aws.yaml'
+alias kube-hermes='export KUBECONFIG=/Users/mattray/.kube/hermes-k3s.yaml'
+alias kube-mom='export KUBECONFIG=/Users/mattray/.kube/mom-k3s.yaml'
+alias kube-larry='export KUBECONFIG=/Users/mattray/.kube/larry-k3s.yaml'
+alias kube-kind='export KUBECONFIG=/Users/mattray/.kube/kind.yaml'
+alias kube-aks='export KUBECONFIG=/Users/mattray/.kube/azure.yaml'
+alias kube-gke='export KUBECONFIG=/Users/mattray/.kube/gke.yaml'
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
