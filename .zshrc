@@ -45,11 +45,11 @@ alias cl='clear'
 alias gzh='grep /Users/mattray/.zsh_history -e'
 alias grep="grep --color=auto"
 
-# ls/exa
-alias ls="exa -aF --color=always"
-alias ls1="exa -1aF --color=always"
-alias lsa="exa -aFl --color=always"
-alias lsr="exa -aFl -s modified --color=always"
+# ls/eza
+alias ls="eza --color=always -aF"
+alias ls1="eza --color=always -1aF"
+alias lsa="eza --color=always -alF"
+alias lsr="eza --color=always -s modified -alF"
 
 # git
 alias gitb="git branch" #list branches
@@ -108,5 +108,6 @@ alias kube-larry='export KUBECONFIG=/Users/mattray/.kube/larry-k3s.yaml'
 alias kube-kind='export KUBECONFIG=/Users/mattray/.kube/kind.yaml'
 alias kube-aks='export KUBECONFIG=/Users/mattray/.kube/azure.yaml'
 alias kube-gke='export KUBECONFIG=/Users/mattray/.kube/gke.yaml'
+alias kube-kc-aws='export KUBECONFIG=/Users/mattray/.kube/kc-aws.yaml'
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
