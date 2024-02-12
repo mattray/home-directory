@@ -5,7 +5,7 @@
 # symbol = "⬢"
 
 add_newline = false
-command_timeout = 1000 # default was 500
+command_timeout = 2000 # default was 500
 continuation_prompt = "❯ "
 format = """
 $username\
