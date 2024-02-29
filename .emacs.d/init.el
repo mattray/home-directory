@@ -71,6 +71,7 @@
      go-autocomplete
      go-mode
      json-mode
+     just-mode
      lsp-mode
      magit
      markdown-mode
