@@ -108,6 +108,6 @@ alias kube-larry='export KUBECONFIG=/Users/mattray/.kube/larry-k3s.yaml'
 alias kube-kind='export KUBECONFIG=/Users/mattray/.kube/kind.yaml'
 alias kube-aks='export KUBECONFIG=/Users/mattray/.kube/azure.yaml'
 alias kube-gke='export KUBECONFIG=/Users/mattray/.kube/gke.yaml'
-alias kube-kc-aws='export KUBECONFIG=/Users/mattray/.kube/kc-aws.yaml'
+alias kube-kc-aws='export KUBECONFIG=/Users/mattray/.kube/kc-aws.json'
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
