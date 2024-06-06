@@ -1,6 +1,6 @@
 # Used for setting user's environment variables
 
-HISTSIZE=200000
+HISTSIZE=500000
 
 GOPATH=$HOME/go
 PATH=$PATH:$HOME/bin:$GOPATH/bin
