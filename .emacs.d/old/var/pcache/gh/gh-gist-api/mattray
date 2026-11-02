@@ -1,9 +1,0 @@
-;; Object gh/gh-gist-api/mattray
-;; EIEIO PERSISTENT OBJECT
-(gh-cache "gh/gh-gist-api/mattray"
-  :file "mattray"
-  :object-name "gh/gh-gist-api/mattray"
-  :version "29.1/0.5/gh-4"
-  :entries #s(hash-table size 65 test equal rehash-size 1.5 rehash-threshold 0.8125 data ())
-  :entry-cls gh-cache-entry
-  :timestamp 1701035898.039508)
