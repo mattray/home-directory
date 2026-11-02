@@ -1,11 +1,13 @@
 # Used for setting user's interactive shell configuration and executing commands, will be read when starting as an interactive shell.
 # For simplicity’s sake, you should use just one file. The common choice is .zshrc.
 
+export ZSH_DISABLE_COMPFIX=true
+
 # https://www.emacswiki.org/emacs/TrampMode#h5o-9
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
 
 # share history across multiple zsh sessions
-# setopt SHARE_HISTORY
+setopt SHARE_HISTORY
 # append to history
 setopt APPEND_HISTORY
 # add commands as they are typed, not at shell exit
@@ -108,10 +110,6 @@ alias kl='kubectl logs'
 alias kx='f() { [ "$1" ] && kubectl config use-context $1 || kubectl config current-context ; } ; f'
 alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 || kubectl config view --minify | grep namespace | cut -d" " -f6 ; } ; f'
 alias kube-hermes='export KUBECONFIG=/Users/mattray/.kube/hermes-k3s.yaml'
-alias kube-kc-aks='export KUBECONFIG=/Users/mattray/.kube/kc-azure.yaml'
-alias kube-kc-aws='export KUBECONFIG=/Users/mattray/.kube/kc-aws.json'
-alias kube-kc-aws-test='export KUBECONFIG=/Users/mattray/.kube/kc-aws-test.json'
-alias kube-kc-gke='export KUBECONFIG=/Users/mattray/.kube/kc-gke.yaml'
 alias kube-kind='export KUBECONFIG=/Users/mattray/.kube/kind.yaml'
 alias kube-larry='export KUBECONFIG=/Users/mattray/.kube/larry-k3s.yaml'
 alias kube-mom='export KUBECONFIG=/Users/mattray/.kube/mom-k3s.yaml'
@@ -122,3 +120,9 @@ alias kube-yancy='export KUBECONFIG=/Users/mattray/.kube/yancy-k3s.yaml'
 export AWS_PROFILE=EngineeringDeveloper
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+export DEVELOPER_DIR="/Applications/XCode.app/Contents/Developer"
+
+export CMAKE_PREFIX_PATH="/Users/mattray/ws/synergy/deps/qt/6.7.2/macos:$CMAKE_PREFIX_PATH"
+
+export PATH="/Users/mattray/ws/synergy/deps/qt/6.7.2/macos/bin:$PATH"
